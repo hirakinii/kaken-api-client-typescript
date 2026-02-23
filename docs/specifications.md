@@ -160,13 +160,9 @@ APIサーバーへの負荷軽減と高速化のためのレスポンスキャ�
 * **ResponseCache クラス**
 * **初期化**: キャッシュディレクトリ（デフォルト: `~/.kaken_api_cache`）を設定。
 * **メソッド**:
-* `get(url: string): Promise<string | Buffer | null>`: URLのハッシュ値をファイル名として、キャッシュがあれば読み込んで返す。
-* `set(url: string, content: any): Promise<void>`: APIのレスポンス内容をファイルに書き込む。
-* `clear(): Promise<void>`: キャッシュディレクトリ内のファイルをすべて削除する。
-
-
-
-
+    * `get(url: string): Promise<string | Buffer | null>`: URLのハッシュ値をファイル名として、キャッシュがあれば読み込んで返す。
+    * `set(url: string, content: any): Promise<void>`: APIのレスポンス内容をファイルに書き込む。
+    * `clear(): Promise<void>`: キャッシュディレクトリ内のファイルをすべて削除する。
 
 ## 7. 例外処理・エラー (`src/exceptions.ts`)
 
