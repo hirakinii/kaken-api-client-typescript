@@ -93,7 +93,7 @@ npm install --save-dev vitest @vitest/coverage-v8
 
 ---
 
-### Step 1: `src/constants.ts` の実装
+### Step 1: `src/constants.ts` の実装　→　完了
 
 **目的**: API エンドポイント・デフォルト値・定数を定義する。
 Python版: `kaken_api/constants.py`
@@ -134,7 +134,7 @@ export const RESEARCHER_ROLES = { /* ... */ };
 
 ---
 
-### Step 2: `src/exceptions.ts` の実装
+### Step 2: `src/exceptions.ts` の実装　→　完了
 
 **目的**: カスタムエラークラスを定義する。
 Python版: `kaken_api/exceptions.py`
@@ -161,7 +161,7 @@ export class KakenApiNotFoundError extends KakenApiError { /* ... */ }
 
 ---
 
-### Step 3: `src/models/index.ts` の実装
+### Step 3: `src/models/index.ts` の実装　→　完了
 
 **目的**: 型定義・インターフェースおよび Zod バリデーションスキーマを定義する。
 Python版: `kaken_api/models.py`
@@ -212,7 +212,7 @@ export interface KakenApiClientOptions { /* ... */ }
 
 ---
 
-### Step 4: `src/utils.ts` の実装
+### Step 4: `src/utils.ts` の実装　→　完了
 
 **目的**: URL 構築・テキスト処理等のユーティリティ関数を実装する。
 Python版: `kaken_api/utils.py`
@@ -240,7 +240,7 @@ export function joinValues(values: string[]): string | undefined
 
 ---
 
-### Step 5: `src/cache.ts` の実装
+### Step 5: `src/cache.ts` の実装　→　完了
 
 **目的**: ファイルベースのレスポンスキャッシュを実装する。
 Python版: `kaken_api/cache.py`
