@@ -63,7 +63,7 @@ tests/
 
 各ステップで **RED → GREEN → REFACTOR** サイクルを遵守する。
 
-### Step 0: プロジェクト初期設定
+### Step 0: プロジェクト初期設定　→　完了
 
 **作業内容**:
 - `package.json` の `scripts` を更新し、`vitest` を追加
