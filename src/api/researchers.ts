@@ -10,7 +10,7 @@ import type {
   JobTitle,
   PersonName,
 } from '../models/index.js';
-import { buildUrl, ensureArray, joinValues } from '../utils.js';
+import { buildUrl } from '../utils.js';
 
 /** Fetch function signature compatible with the Web Fetch API. */
 export type FetchFn = (url: string) => Promise<Response>;
