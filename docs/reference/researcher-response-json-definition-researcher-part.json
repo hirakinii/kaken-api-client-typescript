@@ -1,0 +1,852 @@
+[
+  {
+    "name": "researchers",
+    "type": "array",
+    "description": "Researcher Information",
+    "notes": "",
+    "children": [
+      {
+        "name": "accn",
+        "type": "string",
+        "description": "ACCN",
+        "notes": ""
+      },
+      {
+        "name": "recordSource",
+        "type": "object",
+        "description": "Data Source",
+        "notes": "",
+        "children": [
+          {
+            "name": "id:person:kakenhi",
+            "type": "array",
+            "description": "Data Source (KAKEN-derived)",
+            "notes": ""
+          },
+          {
+            "name": "id:person:erad_pseudo_unique",
+            "type": "array",
+            "description": "Data Source (eRad-derived)",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "relation:relatedResource",
+        "type": "array",
+        "description": "Related information's ID",
+        "notes": "",
+        "children": [
+          {
+            "name": "id:project:kakenhi",
+            "type": "string",
+            "description": "Research Project Number",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "id:person:erad",
+        "type": "array",
+        "description": "eRad Researcher Number",
+        "notes": ""
+      },
+      {
+        "name": "id:person:erad:alternative",
+        "type": "array",
+        "description": "eRad Researcher Number (incorrect ID)",
+        "notes": ""
+      },
+      {
+        "name": "id:person:jst",
+        "type": "array",
+        "description": "JST Researcher Number",
+        "notes": ""
+      },
+      {
+        "name": "id:person:researchmap",
+        "type": "array",
+        "description": "ResearchMap Researcher Number",
+        "notes": ""
+      },
+      {
+        "name": "id:person:jglobal",
+        "type": "array",
+        "description": "J-GLOBAL Researcher Number",
+        "notes": ""
+      },
+      {
+        "name": "id:orcid",
+        "type": "array",
+        "description": "ORCID Researcher Number",
+        "notes": ""
+      },
+      {
+        "name": "name",
+        "type": "object",
+        "description": "Researcher Name Information (Representative)",
+        "notes": "",
+        "children": [
+          {
+            "name": "name:familyName",
+            "type": "array",
+            "description": "Researcher Name, Family Name",
+            "notes": "",
+            "children": [
+              {
+                "name": "lang",
+                "type": "string",
+                "description": "Researcher Name, Family Name, Language",
+                "notes": "iso639-1"
+              },
+              {
+                "name": "text",
+                "type": "string",
+                "description": "Researcher Name, Family Name, Text",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "name:givenName",
+            "type": "array",
+            "description": "Researcher Name, Given Name",
+            "notes": "",
+            "children": [
+              {
+                "name": "lang",
+                "type": "string",
+                "description": "Researcher Name, Given Name, Language",
+                "notes": "iso639-1"
+              },
+              {
+                "name": "text",
+                "type": "string",
+                "description": "Researcher Name, Given Name, Text",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "since",
+            "type": "object",
+            "description": "Researcher Name, Start Date",
+            "notes": "",
+            "children": [
+              {
+                "name": "humanReadableValue",
+                "type": "string",
+                "description": "Researcher Name, Start Date, Value",
+                "notes": ""
+              },
+              {
+                "name": "commonEra:year",
+                "type": "int",
+                "description": "Researcher Name, Start Date (Year)",
+                "notes": ""
+              },
+              {
+                "name": "month",
+                "type": "int",
+                "description": "Researcher Name, Start Date (Month)",
+                "notes": ""
+              },
+              {
+                "name": "day",
+                "type": "int",
+                "description": "Researcher Name, Start Date (Day)",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "util",
+            "type": "object",
+            "description": "Researcher Name, End Date",
+            "notes": "",
+            "children": [
+              {
+                "name": "humanReadableValue",
+                "type": "string",
+                "description": "Researcher Name, End Date, Value",
+                "notes": ""
+              },
+              {
+                "name": "commonEra:year",
+                "type": "int",
+                "description": "Researcher Name, End Date (Year)",
+                "notes": ""
+              },
+              {
+                "name": "month",
+                "type": "int",
+                "description": "Researcher Name, End Date (Month)",
+                "notes": ""
+              },
+              {
+                "name": "day",
+                "type": "int",
+                "description": "Researcher Name, End Date (Day)",
+                "notes": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "names",
+        "type": "array",
+        "description": "Researcher Name Information",
+        "notes": "",
+        "children": [
+          {
+            "name": "sequence",
+            "type": "int",
+            "description": "Researcher Name, Display Order",
+            "notes": ""
+          },
+          {
+            "name": "humanReadableValue",
+            "type": "array",
+            "description": "Researcher Name, Full Name",
+            "notes": "",
+            "children": [
+              {
+                "name": "lang",
+                "type": "string",
+                "description": "Researcher Name, Full Name, Language",
+                "notes": "iso639-1"
+              },
+              {
+                "name": "text",
+                "type": "string",
+                "description": "Researcher Name, Full Name, Text",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "since",
+            "type": "object",
+            "description": "Researcher Name, Start Date",
+            "notes": "",
+            "children": [
+              {
+                "name": "commonEra:year",
+                "type": "int",
+                "description": "Researcher Name, Start Date (Year)",
+                "notes": ""
+              },
+              {
+                "name": "month",
+                "type": "int",
+                "description": "Researcher Name, Start Date (Month)",
+                "notes": ""
+              },
+              {
+                "name": "day",
+                "type": "int",
+                "description": "Researcher Name, Start Date (Day)",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "util",
+            "type": "object",
+            "description": "Researcher Name, End Date",
+            "notes": "",
+            "children": [
+              {
+                "name": "commonEra:year",
+                "type": "int",
+                "description": "Researcher Name, End Date (Year)",
+                "notes": ""
+              },
+              {
+                "name": "month",
+                "type": "int",
+                "description": "Researcher Name, End Date (Month)",
+                "notes": ""
+              },
+              {
+                "name": "day",
+                "type": "int",
+                "description": "Researcher Name, End Date (Day)",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "name:familyName",
+            "type": "array",
+            "description": "Researcher Name, Family Name",
+            "notes": "",
+            "children": [
+              {
+                "name": "lang",
+                "type": "string",
+                "description": "Researcher Name, Family Name, Language",
+                "notes": "iso639-1"
+              },
+              {
+                "name": "text",
+                "type": "string",
+                "description": "Researcher Name, Family Name, Text",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "name:givenName",
+            "type": "array",
+            "description": "Researcher Name, Given Name",
+            "notes": "",
+            "children": [
+              {
+                "name": "lang",
+                "type": "string",
+                "description": "Researcher Name, Given Name, Language",
+                "notes": "iso639-1"
+              },
+              {
+                "name": "text",
+                "type": "string",
+                "description": "Researcher Name, Given Name, Text",
+                "notes": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "affiliations:current",
+        "type": "array",
+        "description": "Current Affiliation",
+        "notes": "",
+        "children": [
+          {
+            "name": "sequence",
+            "type": "int",
+            "description": "Affiliation,  Display Order",
+            "notes": ""
+          },
+          {
+            "name": "since",
+            "type": "object",
+            "description": "Affiliation,  Start Date",
+            "notes": "",
+            "children": [
+              {
+                "name": "humanReadableValue",
+                "type": "string",
+                "description": "Affiliation,  Start Date, Value",
+                "notes": ""
+              },
+              {
+                "name": "commonEra:year",
+                "type": "int",
+                "description": "Affiliation,  Start Date (Year)",
+                "notes": ""
+              },
+              {
+                "name": "month",
+                "type": "int",
+                "description": "Affiliation,  Start Date (Month)",
+                "notes": ""
+              },
+              {
+                "name": "day",
+                "type": "int",
+                "description": "Affiliation,  Start Date (Day)",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "util",
+            "type": "object",
+            "description": "Affiliation,  End Date",
+            "notes": "",
+            "children": [
+              {
+                "name": "humanReadableValue",
+                "type": "string",
+                "description": "Affiliation,  End Date, Value",
+                "notes": ""
+              },
+              {
+                "name": "commonEra:year",
+                "type": "int",
+                "description": "Affiliation,  End Date (Year)",
+                "notes": ""
+              },
+              {
+                "name": "month",
+                "type": "int",
+                "description": "Affiliation,  End Date (Month)",
+                "notes": ""
+              },
+              {
+                "name": "day",
+                "type": "int",
+                "description": "Affiliation,  End Date (Day)",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "affiliation:institution",
+            "type": "object",
+            "description": "Affiliated Institutuion",
+            "notes": "",
+            "children": [
+              {
+                "name": "humanReadableValue",
+                "type": "array",
+                "description": "Affiliated Institutuion, Value",
+                "notes": "",
+                "children": [
+                  {
+                    "name": "lang",
+                    "type": "string",
+                    "description": "Affiliated Institutuion, Language",
+                    "notes": "iso639-1"
+                  },
+                  {
+                    "name": "text",
+                    "type": "string",
+                    "description": "Affiliated Institutuion, Text",
+                    "notes": ""
+                  }
+                ]
+              },
+              {
+                "name": "category:institution:kakenhi",
+                "type": "string",
+                "description": "Affiliated Institutuion, Institution Type",
+                "notes": ""
+              },
+              {
+                "name": "id:institution:kakenhi",
+                "type": "string",
+                "description": "Affiliated Institutuion, Research Institution Code (NII Code)",
+                "notes": ""
+              },
+              {
+                "name": "id:institution:mext",
+                "type": "string",
+                "description": "Affiliated Institutuion, MEXT Code",
+                "notes": ""
+              },
+              {
+                "name": "id:institution:jsps",
+                "type": "string",
+                "description": "Affiliated Institutuion, JSPS Code",
+                "notes": ""
+              },
+              {
+                "name": "id:institution:jst",
+                "type": "string",
+                "description": "Affiliated Institutuion, JST Code",
+                "notes": ""
+              },
+              {
+                "name": "id:institution:erad",
+                "type": "string",
+                "description": "Affiliated Institutuion, eRad Code",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "affiliation:department",
+            "type": "object",
+            "description": "Affiliated Department",
+            "notes": "",
+            "children": [
+              {
+                "name": "humanReadableValue",
+                "type": "array",
+                "description": "Affiliated Department, Value",
+                "notes": "",
+                "children": [
+                  {
+                    "name": "lang",
+                    "type": "string",
+                    "description": "Affiliated Department, Language",
+                    "notes": "iso639-1"
+                  },
+                  {
+                    "name": "text",
+                    "type": "string",
+                    "description": "Affiliated Department, Text",
+                    "notes": ""
+                  }
+                ]
+              },
+              {
+                "name": "id:department:mext",
+                "type": "string",
+                "description": "Affiliated Department, MEXT Code",
+                "notes": ""
+              },
+              {
+                "name": "id:department:jsps",
+                "type": "string",
+                "description": "Affiliated Department, JSPS Code",
+                "notes": ""
+              },
+              {
+                "name": "id:department:jst",
+                "type": "string",
+                "description": "Affiliated Department, JST Code",
+                "notes": ""
+              },
+              {
+                "name": "id:department:erad",
+                "type": "string",
+                "description": "Affiliated Department, eRad Code",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "affiliation:jobTitle",
+            "type": "object",
+            "description": "Job Title",
+            "notes": "",
+            "children": [
+              {
+                "name": "humanReadableValue",
+                "type": "array",
+                "description": "Job Title, Value",
+                "notes": "",
+                "children": [
+                  {
+                    "name": "lang",
+                    "type": "string",
+                    "description": "Job Title, Language",
+                    "notes": "iso639-1"
+                  },
+                  {
+                    "name": "text",
+                    "type": "string",
+                    "description": "Job Title, Text",
+                    "notes": ""
+                  }
+                ]
+              },
+              {
+                "name": "id:jobTitle:mext",
+                "type": "string",
+                "description": "Job Title, MEXT Code",
+                "notes": ""
+              },
+              {
+                "name": "id:jobTitle:jsps",
+                "type": "string",
+                "description": "Job Title, JSPS Code",
+                "notes": ""
+              },
+              {
+                "name": "id:jobTitle:jst",
+                "type": "string",
+                "description": "Job Title, JST Code",
+                "notes": ""
+              },
+              {
+                "name": "id:jobTitle:erad",
+                "type": "string",
+                "description": "Job Title, eRad Code",
+                "notes": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "affiliations:history",
+        "type": "array",
+        "description": "Past Affiliation (Based on the past Research Project Information)",
+        "notes": "",
+        "children": [
+          {
+            "name": "sequence",
+            "type": "int",
+            "description": "Affiliation,  Display Order",
+            "notes": ""
+          },
+          {
+            "name": "since",
+            "type": "object",
+            "description": "Affiliation,  Start Date",
+            "notes": "",
+            "children": [
+              {
+                "name": "humanReadableValue",
+                "type": "string",
+                "description": "Affiliation,  Start Date, Value",
+                "notes": ""
+              },
+              {
+                "name": "commonEra:year",
+                "type": "int",
+                "description": "Affiliation,  Start Date (Year)",
+                "notes": ""
+              },
+              {
+                "name": "month",
+                "type": "int",
+                "description": "Affiliation,  Start Date (Month)",
+                "notes": ""
+              },
+              {
+                "name": "day",
+                "type": "int",
+                "description": "Affiliation,  Start Date (Day)",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "util",
+            "type": "object",
+            "description": "Affiliation,  End Date",
+            "notes": "",
+            "children": [
+              {
+                "name": "humanReadableValue",
+                "type": "string",
+                "description": "Affiliation,  End Date, Value",
+                "notes": ""
+              },
+              {
+                "name": "commonEra:year",
+                "type": "int",
+                "description": "Affiliation,  End Date (Year)",
+                "notes": ""
+              },
+              {
+                "name": "month",
+                "type": "int",
+                "description": "Affiliation,  End Date (Month)",
+                "notes": ""
+              },
+              {
+                "name": "day",
+                "type": "int",
+                "description": "Affiliation,  End Date (Day)",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "affiliation:institution",
+            "type": "object",
+            "description": "Affiliated Institutuion",
+            "notes": "",
+            "children": [
+              {
+                "name": "humanReadableValue",
+                "type": "array",
+                "description": "Affiliated Institutuion, Value",
+                "notes": "",
+                "children": [
+                  {
+                    "name": "lang",
+                    "type": "string",
+                    "description": "Affiliated Institutuion, Language",
+                    "notes": "iso639-1"
+                  },
+                  {
+                    "name": "text",
+                    "type": "string",
+                    "description": "Affiliated Institutuion, Text",
+                    "notes": ""
+                  }
+                ]
+              },
+              {
+                "name": "category:institution:kakenhi",
+                "type": "string",
+                "description": "Affiliated Institutuion, Institution Type",
+                "notes": ""
+              },
+              {
+                "name": "id:institution:kakenhi",
+                "type": "string",
+                "description": "Affiliated Institutuion, Research Institution Code (NII Code)",
+                "notes": ""
+              },
+              {
+                "name": "id:institution:mext",
+                "type": "string",
+                "description": "Affiliated Institutuion, MEXT Code",
+                "notes": ""
+              },
+              {
+                "name": "id:institution:jsps",
+                "type": "string",
+                "description": "Affiliated Institutuion, JSPS Code",
+                "notes": ""
+              },
+              {
+                "name": "id:institution:jst",
+                "type": "string",
+                "description": "Affiliated Institutuion, JST Code",
+                "notes": ""
+              },
+              {
+                "name": "id:institution:erad",
+                "type": "string",
+                "description": "Affiliated Institutuion, eRad Code",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "affiliation:department",
+            "type": "object",
+            "description": "Affiliated Department",
+            "notes": "",
+            "children": [
+              {
+                "name": "humanReadableValue",
+                "type": "array",
+                "description": "Affiliated Department, Value",
+                "notes": "",
+                "children": [
+                  {
+                    "name": "lang",
+                    "type": "string",
+                    "description": "Affiliated Department, Language",
+                    "notes": "iso639-1"
+                  },
+                  {
+                    "name": "text",
+                    "type": "string",
+                    "description": "Affiliated Department, Text",
+                    "notes": ""
+                  }
+                ]
+              },
+              {
+                "name": "id:department:mext",
+                "type": "string",
+                "description": "Affiliated Department, MEXT Code",
+                "notes": ""
+              },
+              {
+                "name": "id:department:jsps",
+                "type": "string",
+                "description": "Affiliated Department, JSPS Code",
+                "notes": ""
+              },
+              {
+                "name": "id:department:jst",
+                "type": "string",
+                "description": "Affiliated Department, JST Code",
+                "notes": ""
+              },
+              {
+                "name": "id:department:erad",
+                "type": "string",
+                "description": "Affiliated Department, eRad Code",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "affiliation:jobTitle",
+            "type": "object",
+            "description": "Job Title",
+            "notes": "",
+            "children": [
+              {
+                "name": "humanReadableValue",
+                "type": "array",
+                "description": "Job Title, Value",
+                "notes": "",
+                "children": [
+                  {
+                    "name": "lang",
+                    "type": "string",
+                    "description": "Job Title, Language",
+                    "notes": "iso639-1"
+                  },
+                  {
+                    "name": "text",
+                    "type": "string",
+                    "description": "Job Title, Text",
+                    "notes": ""
+                  }
+                ]
+              },
+              {
+                "name": "id:jobTitle:mext",
+                "type": "string",
+                "description": "Job Title, MEXT Code",
+                "notes": ""
+              },
+              {
+                "name": "id:jobTitle:jsps",
+                "type": "string",
+                "description": "Job Title, JSPS Code",
+                "notes": ""
+              },
+              {
+                "name": "id:jobTitle:jst",
+                "type": "string",
+                "description": "Job Title, JST Code",
+                "notes": ""
+              },
+              {
+                "name": "id:jobTitle:erad",
+                "type": "string",
+                "description": "Job Title, eRad Code",
+                "notes": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "work:project",
+        "type": "array",
+        "description": "Research Project (Refer to Research Project Sheet)",
+        "notes": ""
+      },
+      {
+        "name": "ongoing",
+        "type": "object",
+        "description": "Ongoing Research Project (Refer to Research Project Sheet)",
+        "notes": ""
+      },
+      {
+        "name": "work:product",
+        "type": "array",
+        "description": "Research Output (Refer to Research Output Sheet)",
+        "notes": ""
+      }
+    ]
+  },
+  {
+    "name": "totalResults",
+    "type": "int",
+    "description": "Total Number of Search Results",
+    "notes": ""
+  },
+  {
+    "name": "startIndex",
+    "type": "int",
+    "description": "Location of Start Index for Acquired Search Results",
+    "notes": ""
+  },
+  {
+    "name": "itemsPerPage",
+    "type": "int",
+    "description": "Specified Number of Acquired Items",
+    "notes": ""
+  }
+]

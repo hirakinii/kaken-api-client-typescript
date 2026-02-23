@@ -1,0 +1,862 @@
+[
+  {
+    "name": "work:product",
+    "type": "array",
+    "description": "Research Output",
+    "notes": "",
+    "children": [
+      {
+        "name": "accn",
+        "type": "array",
+        "description": "ACCN",
+        "notes": ""
+      },
+      {
+        "name": "recordSource",
+        "type": "object",
+        "description": "Data Source",
+        "notes": "",
+        "children": [
+          {
+            "name": "id:product:kakenhi",
+            "type": "array",
+            "description": "Research Project Output ID",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "resourceType",
+        "type": "string",
+        "description": "Research Output Type",
+        "notes": ""
+      },
+      {
+        "name": "attribute:reviewed",
+        "type": "boolean",
+        "description": "Peer Reviewed or Not",
+        "notes": ""
+      },
+      {
+        "name": "attribute:invited",
+        "type": "boolean",
+        "description": "Invited Lecture or Not",
+        "notes": ""
+      },
+      {
+        "name": "attribute:foreign",
+        "type": "boolean",
+        "description": "Overseas or not",
+        "notes": ""
+      },
+      {
+        "name": "rights:accessLevel",
+        "type": "string",
+        "description": "Open Access or Not",
+        "notes": ""
+      },
+      {
+        "name": "attribute:acknowledgement",
+        "type": "boolean",
+        "description": "With or Without Acknowledgement",
+        "notes": ""
+      },
+      {
+        "name": "attribute:jointInternationalResearch",
+        "type": "boolean",
+        "description": "International Co-authorship/Conference or Not",
+        "notes": ""
+      },
+      {
+        "name": "language",
+        "type": "string",
+        "description": "Language",
+        "notes": "iso639-3"
+      },
+      {
+        "name": "relation:relatedResource",
+        "type": "array",
+        "description": "Data Source",
+        "notes": "",
+        "children": [
+          {
+            "name": "id:project:kakenhi",
+            "type": "string",
+            "description": "Research Project Number",
+            "notes": ""
+          },
+          {
+            "name": "uri",
+            "type": "string",
+            "description": "Data element defined by junii2\r\n　Ichushi ID\r\n　Link to the full text\r\n　Information about the version\r\n　　It is a different version\r\n　　There are different versions\r\n　　It is required\r\n　　It is a different format\r\n　　There are different formats",
+            "notes": ""
+          },
+          {
+            "name": "unclassified",
+            "type": "string",
+            "description": "\"Identifier of Other Resource\" defined by junii2",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "id:doi",
+        "type": "array",
+        "description": "DOI",
+        "notes": "",
+        "children": [
+          {
+            "name": "value",
+            "type": "string",
+            "description": "DOI, Value",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "attribute:id:doi:asWritten",
+        "type": "array",
+        "description": "DOI before Normalization",
+        "notes": "",
+        "children": [
+          {
+            "name": "text",
+            "type": "string",
+            "description": "DOI before Normalization, String",
+            "notes": ""
+          },
+          {
+            "name": "valueExtracted",
+            "type": "array",
+            "description": "DOI before Normalization, Extraction of Candidate DOI",
+            "notes": "",
+            "children": [
+              {
+                "name": "value",
+                "type": "string",
+                "description": "DOI before Normalization, Candidate DOI, Value",
+                "notes": ""
+              },
+              {
+                "name": "existenceConfirmed",
+                "type": "boolean",
+                "description": "DOI before Normalization, Candidate DOI, Whether it exists in other source or not",
+                "notes": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "id:pmid",
+        "type": "string",
+        "description": "PubMedID",
+        "notes": ""
+      },
+      {
+        "name": "id:pmcid",
+        "type": "string",
+        "description": "PubMedCID",
+        "notes": ""
+      },
+      {
+        "name": "source:issn",
+        "type": "array",
+        "description": "ISSN",
+        "notes": "",
+        "children": [
+          {
+            "name": "value",
+            "type": "string",
+            "description": "ISSN value",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "source:ncid",
+        "type": "string",
+        "description": "NCID",
+        "notes": ""
+      },
+      {
+        "name": "id:jglobal",
+        "type": "string",
+        "description": "J-GLOBAL ID",
+        "notes": ""
+      },
+      {
+        "name": "source:isbn",
+        "type": "array",
+        "description": "ISBN",
+        "notes": "",
+        "children": [
+          {
+            "name": "value",
+            "type": "string",
+            "description": "ISBN, Value",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "id:naid",
+        "type": "object",
+        "description": "NAID:CiNii Books or Articles ID",
+        "notes": "",
+        "children": [
+          {
+            "name": "value",
+            "type": "string",
+            "description": "NAID:CiNii Books or Articles ID's value",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "id:patentId",
+        "type": "object",
+        "description": "Patent (Industrial Property Right)",
+        "notes": "",
+        "children": [
+          {
+            "name": "applicationType",
+            "type": "string",
+            "description": "Patent (Industrial Property Right), Patent Type",
+            "notes": ""
+          },
+          {
+            "name": "applicationNumber",
+            "type": "string",
+            "description": "Patent (Industrial Property Right), Application Number",
+            "notes": ""
+          },
+          {
+            "name": "publicationNumber",
+            "type": "string",
+            "description": "Patent (Industrial Property Right), Publication Number",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "id:uri",
+        "type": "string",
+        "description": "URL",
+        "notes": ""
+      },
+      {
+        "name": "attribute:creator:candidate",
+        "type": "array",
+        "description": "Author's/Presenter's Name (extracted from KAKEN)",
+        "notes": "",
+        "children": [
+          {
+            "name": "estimated",
+            "type": "boolean",
+            "description": "Author's/Presenter's Name (Whether it is estimated from aggregation or not)",
+            "notes": ""
+          },
+          {
+            "name": "list",
+            "type": "array",
+            "description": "Author's/Presenter's Name, List",
+            "notes": "",
+            "children": [
+              {
+                "name": "sequence",
+                "type": "int",
+                "description": "Author's/Presenter's Name, Display Order",
+                "notes": ""
+              },
+              {
+                "name": "person:name",
+                "type": "array",
+                "description": "Author's/Presenter's Name, Name",
+                "notes": "",
+                "children": [
+                  {
+                    "name": "lang",
+                    "type": "string",
+                    "description": "Author's/Presenter's Name, Language",
+                    "notes": "iso639-1"
+                  },
+                  {
+                    "name": "text",
+                    "type": "string",
+                    "description": "Author's/Presenter's Name, Text",
+                    "notes": ""
+                  }
+                ]
+              },
+              {
+                "name": "accn",
+                "type": "string",
+                "description": "Author's/Presenter's Name ACCN",
+                "notes": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "creator:unparsed",
+        "type": "array",
+        "description": "Author's/Presenter's Name (Unparsed)",
+        "notes": "",
+        "children": [
+          {
+            "name": "lang",
+            "type": "string",
+            "description": "Author's/Presenter's Name, Language",
+            "notes": "iso639-1"
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "description": "Author's/Presenter's Name, Text",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "title:main",
+        "type": "object",
+        "description": "Title/Article Title/Presentation Title (Japanese)",
+        "notes": "",
+        "children": [
+          {
+            "name": "lang",
+            "type": "string",
+            "description": "Title/Article Title/Presentation Title (Japanese), Language",
+            "notes": "iso639-1, ja fixed"
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "description": "Title/Article Title/Presentation Title (Japanese), Text",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "title:alternative",
+        "type": "object",
+        "description": "Title/Article Title/Presentation Title (English)",
+        "notes": "",
+        "children": [
+          {
+            "name": "lang",
+            "type": "string",
+            "description": "Title/Article Title/Presentation Title (English), Language",
+            "notes": "iso639-1, en fixed"
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "description": "Title/Article Title/Presentation Title (English), Text",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "source:title",
+        "type": "object",
+        "description": "Journal Title (Japanese)",
+        "notes": "",
+        "children": [
+          {
+            "name": "lang",
+            "type": "string",
+            "description": "Journal Title (Japanese), Language",
+            "notes": "iso639-1, ja fixed"
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "description": "Journal Title (Japanese), Text",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "source:alternativeTitle",
+        "type": "object",
+        "description": "Journal Title (English)",
+        "notes": "",
+        "children": [
+          {
+            "name": "lang",
+            "type": "string",
+            "description": "Journal Title (English), Language",
+            "notes": "iso639-1, en fixed"
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "description": "Journal Title (English), Text",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "contributor:organizer:unparsed",
+        "type": "array",
+        "description": "Conference Organiser's Name (Unparsed)",
+        "notes": "",
+        "children": [
+          {
+            "name": "lang",
+            "type": "string",
+            "description": "Conference Organiser's Name, Language",
+            "notes": "iso639-1"
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "description": "Conference Organiser's Name, Text",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "contributor:publisher:unparsed",
+        "type": "array",
+        "description": "Publisher (Unparsed)",
+        "notes": "",
+        "children": [
+          {
+            "name": "lang",
+            "type": "string",
+            "description": "Publisher, Language",
+            "notes": "iso639-1"
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "description": "Publisher, Text",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "source:volume",
+        "type": "string",
+        "description": "Volume",
+        "notes": ""
+      },
+      {
+        "name": "source:issue",
+        "type": "string",
+        "description": "Issue",
+        "notes": ""
+      },
+      {
+        "name": "source:firstPage",
+        "type": "string",
+        "description": "First Page",
+        "notes": ""
+      },
+      {
+        "name": "source:lastPage",
+        "type": "string",
+        "description": "Last Page",
+        "notes": ""
+      },
+      {
+        "name": "description:totalPages",
+        "type": "int",
+        "description": "Total Number of Pages",
+        "notes": ""
+      },
+      {
+        "name": "date:publicationDate",
+        "type": "object",
+        "description": "Date",
+        "notes": "",
+        "children": [
+          {
+            "name": "humanReadableValue",
+            "type": "array",
+            "description": "Date, Value",
+            "notes": "",
+            "children": [
+              {
+                "name": "text",
+                "type": "string",
+                "description": "Date, Text",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "commonEra:year",
+            "type": "int",
+            "description": "Date, Year",
+            "notes": ""
+          },
+          {
+            "name": "month",
+            "type": "int",
+            "description": "Date, Month",
+            "notes": ""
+          },
+          {
+            "name": "day",
+            "type": "int",
+            "description": "Date, Day",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "description:conferenceLocation",
+        "type": "object",
+        "description": "Place of Presentation",
+        "notes": "",
+        "children": [
+          {
+            "name": "humanReadableValue",
+            "type": "array",
+            "description": "Place of Presentation, Value",
+            "notes": "",
+            "children": [
+              {
+                "name": "lang",
+                "type": "string",
+                "description": "Place of Presentation, Language",
+                "notes": ""
+              },
+              {
+                "name": "text",
+                "type": "string",
+                "description": "Place of Presentation, Text",
+                "notes": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "description:description",
+        "type": "array",
+        "description": "Description",
+        "notes": "",
+        "children": [
+          {
+            "name": "lang",
+            "type": "string",
+            "description": "Description, Language",
+            "notes": ""
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "description": "Description, Text",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "contributor:patentInventor",
+        "type": "array",
+        "description": "Patent (Industrial Property Right), Inventor (CrossRef)",
+        "notes": "",
+        "children": [
+          {
+            "name": "sequence",
+            "type": "int",
+            "description": "Patent (Industrial Property Right), Inventor, Display Order",
+            "notes": ""
+          },
+          {
+            "name": "person:name",
+            "type": "array",
+            "description": "Patent (Industrial Property Right), Inventor, Name",
+            "notes": "",
+            "children": [
+              {
+                "name": "lang",
+                "type": "string",
+                "description": "Patent (Industrial Property Right), Inventor, Language",
+                "notes": ""
+              },
+              {
+                "name": "text",
+                "type": "string",
+                "description": "Patent (Industrial Property Right), Inventor, Text",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "attribute:id:person:kakenhi:estimated",
+            "type": "array",
+            "description": "Patent (Industrial Property Right), Inventor, Researcher Number",
+            "notes": ""
+          },
+          {
+            "name": "id:orcid",
+            "type": "string",
+            "description": "Patent (Industrial Property Right), Inventor, ORCID iD",
+            "notes": "",
+            "children": [
+              {
+                "name": "accn",
+                "type": "string",
+                "description": "Patent (Industrial Property Right), Inventor, ACCN",
+                "notes": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "contributor:patentInventor:unparsed",
+        "type": "array",
+        "description": "Patent (Industrial Property Right), Inventor (Unparsed)",
+        "notes": "",
+        "children": [
+          {
+            "name": "lang",
+            "type": "string",
+            "description": "Patent (Industrial Property Right), Inventor, Language",
+            "notes": ""
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "description": "Patent (Industrial Property Right), Inventor, Text",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "contributor:patentAssignee",
+        "type": "array",
+        "description": "Patent (Industrial Property Right), Right Holder/Applicant (CrossRef)",
+        "notes": "",
+        "children": [
+          {
+            "name": "sequence",
+            "type": "int",
+            "description": "Patent (Industrial Property Right), Right Holder/Applicant, Display Order",
+            "notes": ""
+          },
+          {
+            "name": "person:name",
+            "type": "array",
+            "description": "Patent (Industrial Property Right), Right Holder/Applicant, Name",
+            "notes": "",
+            "children": [
+              {
+                "name": "lang",
+                "type": "string",
+                "description": "Patent (Industrial Property Right), Right Holder/Applicant, Language",
+                "notes": ""
+              },
+              {
+                "name": "text",
+                "type": "string",
+                "description": "Patent (Industrial Property Right), Right Holder/Applicant, Text",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "attribute:id:person:kakenhi:estimated",
+            "type": "array",
+            "description": "Patent (Industrial Property Right), Right Holder/Applicant, Researcher Number",
+            "notes": ""
+          },
+          {
+            "name": "id:orcid",
+            "type": "string",
+            "description": "Patent (Industrial Property Right), Right Holder/Applicant, ORCID iD",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "contributor:patentAssignee:unparsed",
+        "type": "array",
+        "description": "Patent (Industrial Property Right), Right Holder/Applicant (Unparsed)",
+        "notes": "",
+        "children": [
+          {
+            "name": "lang",
+            "type": "string",
+            "description": "Patent (Industrial Property Right), Right Holder/Applicant, Language",
+            "notes": ""
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "description": "Patent (Industrial Property Right), Right Holder/Applicant, Text",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "date:patentApplicationDate",
+        "type": "object",
+        "description": "Patent (Industrial Property Right), Application Date",
+        "notes": "",
+        "children": [
+          {
+            "name": "humanReadableValue",
+            "type": "array",
+            "description": "Patent (Industrial Property Right), Application Date, Value",
+            "notes": "",
+            "children": [
+              {
+                "name": "text",
+                "type": "string",
+                "description": "Patent (Industrial Property Right), Application Date, Text",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "commonEra:year",
+            "type": "int",
+            "description": "Patent (Industrial Property Right), Application Date, Year",
+            "notes": ""
+          },
+          {
+            "name": "month",
+            "type": "int",
+            "description": "Patent (Industrial Property Right), Application Date, Month",
+            "notes": ""
+          },
+          {
+            "name": "day",
+            "type": "int",
+            "description": "Patent (Industrial Property Right), Application Date, Day",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "date:patentIssueDate",
+        "type": "object",
+        "description": "Patent (Industrial Property Right), Issue Date",
+        "notes": "",
+        "children": [
+          {
+            "name": "humanReadableValue",
+            "type": "array",
+            "description": "Patent (Industrial Property Right), Issue Date, Value",
+            "notes": "",
+            "children": [
+              {
+                "name": "text",
+                "type": "string",
+                "description": "Patent (Industrial Property Right), Issue Date, Text",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "commonEra:year",
+            "type": "int",
+            "description": "Patent (Industrial Property Right), Issue Date, Year",
+            "notes": ""
+          },
+          {
+            "name": "month",
+            "type": "int",
+            "description": "Patent (Industrial Property Right), Issue Date, Month",
+            "notes": ""
+          },
+          {
+            "name": "day",
+            "type": "int",
+            "description": "Patent (Industrial Property Right), Issue Date, Day",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "date:patentPublicationDate",
+        "type": "object",
+        "description": "Patent (Industrial Property Right), Publication Date",
+        "notes": "",
+        "children": [
+          {
+            "name": "humanReadableValue",
+            "type": "array",
+            "description": "Patent (Industrial Property Right), Publication Date, Value",
+            "notes": "",
+            "children": [
+              {
+                "name": "text",
+                "type": "string",
+                "description": "Patent (Industrial Property Right), Publication Date, Text",
+                "notes": ""
+              }
+            ]
+          },
+          {
+            "name": "commonEra:year",
+            "type": "int",
+            "description": "Patent (Industrial Property Right), Publication Date, Year",
+            "notes": ""
+          },
+          {
+            "name": "month",
+            "type": "int",
+            "description": "Patent (Industrial Property Right), Publication Date, Month",
+            "notes": ""
+          },
+          {
+            "name": "day",
+            "type": "int",
+            "description": "Patent (Industrial Property Right), Publication Date, Day",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "description:plainText",
+        "type": "array",
+        "description": "Plain Text",
+        "notes": "",
+        "children": [
+          {
+            "name": "lang",
+            "type": "string",
+            "description": "Plain Text, Language",
+            "notes": ""
+          },
+          {
+            "name": "text",
+            "type": "string",
+            "description": "Plain Text, Text",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "name": "description:annotation",
+        "type": "object",
+        "description": "\"Provisions of Rights about the Contents\" defined by junii2",
+        "notes": "",
+        "children": [
+          {
+            "name": "class",
+            "type": "text",
+            "description": "\"Provisions of Rights about the Contents\" defined by junii2, Annotation Class",
+            "notes": "\"rights\" fixed"
+          },
+          {
+            "name": "text",
+            "type": "text",
+            "description": "\"Provisions of Rights about the Contents\" defined by junii2, Text",
+            "notes": ""
+          }
+        ]
+      }
+    ]
+  }
+]
