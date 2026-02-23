@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grants>
+  <totalResults>1234</totalResults>
+  <startIndex>1</startIndex>
+  <itemsPerPage>20</itemsPerPage>
+  <grantAward id="KAKENHI-PROJECT-21K10000" awardNumber="21K10000" projectType="project">
+    <summary>
+      <title>機械学習を用いた新しい研究手法の開発</title>
+    </summary>
+  </grantAward>
+  <grantAward id="KAKENHI-PROJECT-22L20000" awardNumber="22L20000" projectType="area">
+    <summary>
+      <title>深層学習による自然言語処理の研究</title>
+    </summary>
+  </grantAward>
+</grants>

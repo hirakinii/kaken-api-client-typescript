@@ -1,0 +1,46 @@
+{
+  "totalResults": 50,
+  "startIndex": 1,
+  "itemsPerPage": 20,
+  "researchers": [
+    {
+      "accn": "1000000001",
+      "name": {
+        "name:familyName": [
+          { "lang": "ja", "text": "田中" },
+          { "lang": "en", "text": "Tanaka" }
+        ],
+        "name:givenName": [
+          { "lang": "ja", "text": "太郎" },
+          { "lang": "en", "text": "Taro" }
+        ]
+      },
+      "affiliations:current": [
+        {
+          "affiliation:institution": {
+            "humanReadableValue": [
+              { "lang": "ja", "text": "東京大学" },
+              { "lang": "en", "text": "The University of Tokyo" }
+            ],
+            "id:institution:kakenhi": "32616",
+            "category:institution:kakenhi": "university"
+          },
+          "affiliation:department": {
+            "humanReadableValue": [
+              { "lang": "ja", "text": "工学部" },
+              { "lang": "en", "text": "Faculty of Engineering" }
+            ],
+            "id:department:mext": "12345"
+          },
+          "affiliation:jobTitle": {
+            "humanReadableValue": [
+              { "lang": "ja", "text": "教授" },
+              { "lang": "en", "text": "Professor" }
+            ],
+            "id:jobTitle:mext": "67890"
+          }
+        }
+      ]
+    }
+  ]
+}
