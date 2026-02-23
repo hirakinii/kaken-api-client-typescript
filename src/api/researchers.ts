@@ -175,9 +175,9 @@ export class ResearchersAPI {
 
       return {
         rawData: data,
-        totalResults: typeof data.totalResults === 'number' ? data.totalResults : undefined,
-        startIndex: typeof data.startIndex === 'number' ? data.startIndex : undefined,
-        itemsPerPage: typeof data.itemsPerPage === 'number' ? data.itemsPerPage : undefined,
+        ...(typeof data.totalResults === 'number' && { totalResults: data.totalResults }),
+        ...(typeof data.startIndex === 'number' && { startIndex: data.startIndex }),
+        ...(typeof data.itemsPerPage === 'number' && { itemsPerPage: data.itemsPerPage }),
         researchers,
       };
     } catch (error) {
@@ -188,7 +188,7 @@ export class ResearchersAPI {
 
   private parseResearcher(data: ResearcherData): Researcher {
     const researcher: Researcher = {
-      id: typeof data.accn === 'string' ? data.accn : undefined,
+      ...(typeof data.accn === 'string' && { id: data.accn }),
       affiliations: [],
       rawData: data,
     };
@@ -218,7 +218,11 @@ export class ResearchersAPI {
     const givenName = this.extractLocalizedText(nameData['name:givenName'] as unknown[]);
     const fullName = familyName && givenName ? `${familyName} ${givenName}` : (familyName ?? givenName ?? 'Unknown');
 
-    return { fullName, familyName, givenName };
+    return {
+      fullName,
+      ...(familyName !== undefined && { familyName }),
+      ...(givenName !== undefined && { givenName }),
+    };
   }
 
   private parseAffiliation(data: ResearcherData): Affiliation | undefined {
@@ -232,7 +236,11 @@ export class ResearchersAPI {
 
     if (!institution && !department && !jobTitle) return undefined;
 
-    return { institution, department, jobTitle };
+    return {
+      ...(institution !== undefined && { institution }),
+      ...(department !== undefined && { department }),
+      ...(jobTitle !== undefined && { jobTitle }),
+    };
   }
 
   private parseInstitution(data: ResearcherData): Institution | undefined {
@@ -241,8 +249,8 @@ export class ResearchersAPI {
 
     return {
       name,
-      code: typeof data['id:institution:kakenhi'] === 'string' ? data['id:institution:kakenhi'] : undefined,
-      type: typeof data['category:institution:kakenhi'] === 'string' ? data['category:institution:kakenhi'] : undefined,
+      ...(typeof data['id:institution:kakenhi'] === 'string' && { code: data['id:institution:kakenhi'] }),
+      ...(typeof data['category:institution:kakenhi'] === 'string' && { type: data['category:institution:kakenhi'] }),
     };
   }
 
@@ -252,7 +260,7 @@ export class ResearchersAPI {
 
     return {
       name,
-      code: typeof data['id:department:mext'] === 'string' ? data['id:department:mext'] : undefined,
+      ...(typeof data['id:department:mext'] === 'string' && { code: data['id:department:mext'] }),
     };
   }
 
@@ -262,7 +270,7 @@ export class ResearchersAPI {
 
     return {
       name,
-      code: typeof data['id:jobTitle:mext'] === 'string' ? data['id:jobTitle:mext'] : undefined,
+      ...(typeof data['id:jobTitle:mext'] === 'string' && { code: data['id:jobTitle:mext'] }),
     };
   }
 

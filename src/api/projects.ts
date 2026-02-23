@@ -174,9 +174,9 @@ export class ProjectsAPI {
 
       return {
         rawData: content,
-        totalResults: root.totalResults !== undefined ? Number(root.totalResults) : undefined,
-        startIndex: root.startIndex !== undefined ? Number(root.startIndex) : undefined,
-        itemsPerPage: root.itemsPerPage !== undefined ? Number(root.itemsPerPage) : undefined,
+        ...(root.totalResults !== undefined && { totalResults: Number(root.totalResults) }),
+        ...(root.startIndex !== undefined && { startIndex: Number(root.startIndex) }),
+        ...(root.itemsPerPage !== undefined && { itemsPerPage: Number(root.itemsPerPage) }),
         projects,
       };
     } catch (error) {
@@ -189,11 +189,16 @@ export class ProjectsAPI {
     const summary = grantAward.summary as Record<string, unknown> | undefined;
     const title = summary?.title as string | undefined;
 
+    const id = grantAward['@_id'] as string | undefined;
+    const awardNumber = grantAward['@_awardNumber'] as string | undefined;
+    const projectType = grantAward['@_projectType'] as string | undefined;
+    const cleanedTitle = cleanText(title);
+
     return {
-      id: grantAward['@_id'] as string | undefined,
-      awardNumber: grantAward['@_awardNumber'] as string | undefined,
-      projectType: grantAward['@_projectType'] as string | undefined,
-      title: cleanText(title),
+      ...(id !== undefined && { id }),
+      ...(awardNumber !== undefined && { awardNumber }),
+      ...(projectType !== undefined && { projectType }),
+      ...(cleanedTitle !== undefined && { title: cleanedTitle }),
       rawData: grantAward,
     };
   }
