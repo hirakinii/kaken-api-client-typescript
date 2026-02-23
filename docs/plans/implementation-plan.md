@@ -272,7 +272,7 @@ export class ResponseCache {
 
 ---
 
-### Step 6: `src/api/projects.ts` の実装
+### Step 6: `src/api/projects.ts` の実装　→　完了
 
 **目的**: 研究課題検索 API クラスを実装する。
 Python版: `kaken_api/api/projects.py`
@@ -308,7 +308,7 @@ export class ProjectsAPI {
 
 ---
 
-### Step 7: `src/api/researchers.ts` の実装
+### Step 7: `src/api/researchers.ts` の実装　→　完了
 
 **目的**: 研究者検索 API クラスを実装する。
 Python版: `kaken_api/api/researchers.py`
