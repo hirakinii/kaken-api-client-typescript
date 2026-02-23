@@ -339,7 +339,7 @@ export class ResearchersAPI {
 
 ---
 
-### Step 8: `src/client.ts` の実装
+### Step 8: `src/client.ts` の実装　→　完了
 
 **目的**: メインクライアントクラスを実装する。
 Python版: `kaken_api/client.py`
@@ -372,7 +372,7 @@ export class KakenApiClient {
 
 ---
 
-### Step 9: `src/index.ts` の実装
+### Step 9: `src/index.ts` の実装　→　完了
 
 **目的**: ライブラリのパブリック API をエクスポートするエントリポイント。
 
