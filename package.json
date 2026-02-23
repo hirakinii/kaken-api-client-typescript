@@ -10,7 +10,8 @@
     "lint": "eslint '{src,tests}/**/*.{ts,tsx}'",
     "format": "prettier --write '{src,tests}/**/*.{ts,tsx}'",
     "build": "tsc",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "prepublishOnly": "npm run format && npm run lint && npm run type-check && npm run test && npm run build"
   },
   "repository": {
     "type": "git",
