@@ -93,7 +93,7 @@ npm install --save-dev vitest @vitest/coverage-v8
 
 ---
 
-### Step 1: `src/constants.ts` の実装
+### Step 1: `src/constants.ts` の実装　→　完了
 
 **目的**: API エンドポイント・デフォルト値・定数を定義する。
 Python版: `kaken_api/constants.py`
@@ -134,7 +134,7 @@ export const RESEARCHER_ROLES = { /* ... */ };
 
 ---
 
-### Step 2: `src/exceptions.ts` の実装
+### Step 2: `src/exceptions.ts` の実装　→　完了
 
 **目的**: カスタムエラークラスを定義する。
 Python版: `kaken_api/exceptions.py`
@@ -161,7 +161,7 @@ export class KakenApiNotFoundError extends KakenApiError { /* ... */ }
 
 ---
 
-### Step 3: `src/models/index.ts` の実装
+### Step 3: `src/models/index.ts` の実装　→　完了
 
 **目的**: 型定義・インターフェースおよび Zod バリデーションスキーマを定義する。
 Python版: `kaken_api/models.py`
@@ -212,7 +212,7 @@ export interface KakenApiClientOptions { /* ... */ }
 
 ---
 
-### Step 4: `src/utils.ts` の実装
+### Step 4: `src/utils.ts` の実装　→　完了
 
 **目的**: URL 構築・テキスト処理等のユーティリティ関数を実装する。
 Python版: `kaken_api/utils.py`
@@ -240,7 +240,7 @@ export function joinValues(values: string[]): string | undefined
 
 ---
 
-### Step 5: `src/cache.ts` の実装
+### Step 5: `src/cache.ts` の実装　→　完了
 
 **目的**: ファイルベースのレスポンスキャッシュを実装する。
 Python版: `kaken_api/cache.py`
@@ -272,7 +272,7 @@ export class ResponseCache {
 
 ---
 
-### Step 6: `src/api/projects.ts` の実装
+### Step 6: `src/api/projects.ts` の実装　→　完了
 
 **目的**: 研究課題検索 API クラスを実装する。
 Python版: `kaken_api/api/projects.py`
@@ -308,7 +308,7 @@ export class ProjectsAPI {
 
 ---
 
-### Step 7: `src/api/researchers.ts` の実装
+### Step 7: `src/api/researchers.ts` の実装　→　完了
 
 **目的**: 研究者検索 API クラスを実装する。
 Python版: `kaken_api/api/researchers.py`
@@ -339,7 +339,7 @@ export class ResearchersAPI {
 
 ---
 
-### Step 8: `src/client.ts` の実装
+### Step 8: `src/client.ts` の実装　→　完了
 
 **目的**: メインクライアントクラスを実装する。
 Python版: `kaken_api/client.py`
@@ -372,7 +372,7 @@ export class KakenApiClient {
 
 ---
 
-### Step 9: `src/index.ts` の実装
+### Step 9: `src/index.ts` の実装　→　完了
 
 **目的**: ライブラリのパブリック API をエクスポートするエントリポイント。
 
@@ -400,7 +400,7 @@ export { ENDPOINTS, DEFAULTS } from "./constants.js";
 
 ---
 
-### Step 10: インテグレーションテスト
+### Step 10: インテグレーションテスト　→　完了
 
 **目的**: 実際の KAKEN API への接続を検証する。
 
@@ -472,7 +472,7 @@ Step 10: インテグレーションテスト
 
 ---
 
-## 6. セキュリティチェック事項
+## 6. セキュリティチェック事項　→　確認済み
 
 仕様書 §5.1 の `appId` は環境変数から取得する想定：
 ```typescript
@@ -482,10 +482,10 @@ const client = new KakenApiClient({
 ```
 
 実装後のセキュリティチェック:
-- [ ] `appId` がハードコードされていないこと
-- [ ] ユーザー入力 (検索パラメータ) が URL エンコードされること
-- [ ] エラーメッセージに内部情報が漏洩しないこと
-- [ ] キャッシュファイルのパストラバーサル対策
+- [x] `appId` がハードコードされていないこと
+- [x] ユーザー入力 (検索パラメータ) が URL エンコードされること
+- [x] エラーメッセージに内部情報が漏洩しないこと
+- [x] キャッシュファイルのパストラバーサル対策
 
 ---
 
