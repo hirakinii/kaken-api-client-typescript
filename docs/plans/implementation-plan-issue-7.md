@@ -60,7 +60,7 @@
 
 ---
 
-### Step 1: `src/models/index.ts` の修正
+### Step 1: `src/models/index.ts` の修正　→　完了
 
 #### 1-1. `Affiliation` インターフェース
 
