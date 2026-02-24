@@ -1,7 +1,7 @@
 # @hirakinii-packages/kaken-api-client-typescript
 
 [![CI](https://github.com/hirakinii/kaken-api-client-typescript/actions/workflows/ci.yml/badge.svg)](https://github.com/hirakinii/kaken-api-client-typescript/actions/workflows/ci.yml)
-[![npm version](https://img.shields.io/npm/v/@hirakinii-packages/kaken-api-client-typescript)](https://www.npmjs.com/package/@hirakinii-packages/kaken-api-client-typescript)
+[![npm version](https://badge.fury.io/js/@hirakinii-packages%2Fkaken-api-client-typescript.svg)](https://badge.fury.io/js/@hirakinii-packages%2Fkaken-api-client-typescript)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 TypeScript/Node.js client library for the [KAKEN](https://kaken.nii.ac.jp/) (科学研究費助成事業データベース) API.
