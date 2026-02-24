@@ -54,12 +54,7 @@ const DEPARTMENT_ID_KEYS = [
 ] as const;
 
 /** Priority-ordered job title ID keys. */
-const JOB_TITLE_ID_KEYS = [
-  'id:jobTitle:erad',
-  'id:jobTitle:mext',
-  'id:jobTitle:jsps',
-  'id:jobTitle:jst',
-] as const;
+const JOB_TITLE_ID_KEYS = ['id:jobTitle:erad', 'id:jobTitle:mext', 'id:jobTitle:jsps', 'id:jobTitle:jst'] as const;
 
 /** API client for searching KAKEN researchers. */
 export class ResearchersAPI {
