@@ -148,7 +148,7 @@ id:jobTitle:erad → id:jobTitle:mext → id:jobTitle:jsps → id:jobTitle:jst
 
 ---
 
-### Step 3: テストフィクスチャの更新
+### Step 3: テストフィクスチャの更新　→　完了
 
 `tests/fixtures/researchers_response.json` を実際の API レスポンス構造に近づける:
 - `affiliations:current` の institution に `id:institution:erad` を追加
@@ -159,7 +159,7 @@ id:jobTitle:erad → id:jobTitle:mext → id:jobTitle:jsps → id:jobTitle:jst
 
 ---
 
-### Step 4: テストの追加・更新
+### Step 4: テストの追加・更新　→　完了
 
 `tests/unit/api/researchers.test.ts` を更新:
 
