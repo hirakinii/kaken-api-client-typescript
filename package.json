@@ -1,8 +1,24 @@
 {
-  "name": "kaken-api-client-typescript",
+  "name": "@hirakinii-packages/kaken-api-client-typescript",
   "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
+  "description": "TypeScript/Node.js client library for the KAKEN (科学研究費助成事業データベース) API",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist/",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
@@ -17,10 +33,23 @@
     "type": "git",
     "url": "git+https://github.com/hirakinii/kaken-api-client-typescript.git"
   },
-  "keywords": [],
-  "author": "hirakinii & Claude",
+  "keywords": [
+    "kaken",
+    "科研費",
+    "jsps",
+    "research",
+    "api",
+    "client",
+    "typescript",
+    "node"
+  ],
+  "author": "hirakinii",
   "license": "MIT",
   "type": "module",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "bugs": {
     "url": "https://github.com/hirakinii/kaken-api-client-typescript/issues"
   },
