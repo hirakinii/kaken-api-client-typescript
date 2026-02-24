@@ -14,7 +14,7 @@ TypeScript/Node.js client library for the [KAKEN](https://kaken.nii.ac.jp/) (科
 - **Researcher search** — search by name, institution, researcher number, and keyword
 - **Automatic retries** — exponential backoff on transient network/server errors
 - **Disk-based response caching** — avoid redundant API calls (Node.js only)
-- **Browser compatible** — works in Vite and other browser bundlers with `useCache: false`
+- **Browser compatible** — works in Vite and other browser bundlers; Node.js helpers are automatically replaced with no-op stubs via the `browser` field in `package.json`
 - **Fully typed** — rich TypeScript types and Zod-validated input schemas
 - **ESM-first** — native ES modules with `"type": "module"`
 
@@ -70,16 +70,18 @@ console.log(`Found ${researchers.totalResults} researchers`);
 
 ### Browser usage
 
-Browser environments are supported when `useCache` is set to `false`. Bundlers that respect the `"browser"` field in `package.json` (e.g. Vite, webpack, Rollup) will automatically use a no-op cache stub that avoids all Node.js-specific APIs.
+Browser environments are fully supported. Bundlers that respect the `"browser"` field in `package.json` (e.g. Vite, webpack, Rollup) will automatically replace the Node.js-specific helpers (`node-cache-io`, `node-env`) with no-op stubs, eliminating all Node.js API dependencies at build time — no extra bundler configuration required.
+
+Since file-based caching is not available in browsers, set `useCache: false` to disable it explicitly:
 
 ```typescript
 const client = new KakenApiClient({
   appId: import.meta.env.VITE_KAKEN_APP_ID,
-  useCache: false, // required for browser environments
+  useCache: false,
 });
 ```
 
-> **Note:** `useCache: true` (the default) requires a Node.js file system and is not supported in browsers.
+> **Note:** If `useCache` is left at its default (`true`) in a browser environment, the cache stubs silently perform no I/O. Disk caching will not occur, but the client remains fully functional.
 
 ### Without caching
 
