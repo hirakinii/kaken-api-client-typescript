@@ -61,8 +61,8 @@ export class ResponseCache {
 
 ## チェックリスト
 
-- [] `src/client.ts` の top-level node:os/node:path import をコンストラクタ内に移動
-- [] `src/cache.browser.ts` を作成
-- [] `package.json` に `browser` フィールドを追加
-- [] ビルドスクリプトに `cache.browser.ts` のコンパイルを含める
-- [] ブラウザ環境向けのテスト追加（`useCache`: `false` で Node.js API が呼ばれないことを確認）
+- [ ] `src/client.ts` の top-level node:os/node:path import をコンストラクタ内に移動　→　別枠で扱う。
+- [x] `src/cache.browser.ts` を作成
+- [x] `package.json` に `browser` フィールドを追加
+- [x] ビルドスクリプトに `cache.browser.ts` のコンパイルを含める
+- [x] ブラウザ環境向けのテスト追加（`useCache`: `false` で Node.js API が呼ばれないことを確認）
