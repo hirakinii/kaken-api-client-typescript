@@ -4,6 +4,9 @@
   "description": "TypeScript/Node.js client library for the KAKEN (科学研究費助成事業データベース) API",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "browser": {
+    "./dist/cache.js": "./dist/cache.browser.js"
+  },
   "exports": {
     ".": {
       "import": "./dist/index.js",

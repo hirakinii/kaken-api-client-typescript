@@ -24,7 +24,6 @@ export interface KakenApiClientOptions {
 
 const BASE_RETRY_DELAY_MS = 1000;
 const MAX_RETRY_DELAY_MS = 30_000;
-const DEFAULT_CACHE_DIR = join(tmpdir(), 'kaken-api-cache');
 
 /**
  * Main client for the KAKEN API.
@@ -56,9 +55,10 @@ export class KakenApiClient {
       timeout = DEFAULTS.TIMEOUT_MS,
       maxRetries = DEFAULTS.MAX_RETRIES,
       useCache = true,
-      cacheDir = DEFAULT_CACHE_DIR,
       fetchFn = fetch,
     } = options;
+
+    const cacheDir = options.cacheDir ?? (useCache ? join(tmpdir(), 'kaken-api-cache') : '');
 
     this.cache = new ResponseCache(cacheDir, useCache);
 
