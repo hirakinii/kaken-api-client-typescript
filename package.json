@@ -5,7 +5,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "browser": {
-    "./dist/cache.js": "./dist/cache.browser.js"
+    "./dist/node-cache-io.js": "./dist/node-cache-io.browser.js",
+    "./dist/node-env.js": "./dist/node-env.browser.js"
   },
   "exports": {
     ".": {

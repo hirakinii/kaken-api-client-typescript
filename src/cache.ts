@@ -1,6 +1,4 @@
-import { createHash } from 'node:crypto';
-import { readFile, writeFile, mkdir, readdir, unlink } from 'node:fs/promises';
-import { join } from 'node:path';
+import { getCacheFilePath, readCacheFile, writeCacheFile, clearCacheFiles } from './node-cache-io.js';
 
 export class ResponseCache {
   constructor(
@@ -10,33 +8,20 @@ export class ResponseCache {
 
   async get(url: string): Promise<Buffer | null> {
     if (!this.enabled) return null;
-    const filePath = this.getCacheFilePath(url);
-    try {
-      return await readFile(filePath);
-    } catch {
-      return null;
-    }
+    return readCacheFile(getCacheFilePath(this.cacheDir, url));
   }
 
   async set(url: string, content: Buffer | string): Promise<void> {
     if (!this.enabled) return;
-    await mkdir(this.cacheDir, { recursive: true });
-    const filePath = this.getCacheFilePath(url);
-    await writeFile(filePath, content);
+    await writeCacheFile(this.cacheDir, getCacheFilePath(this.cacheDir, url), content);
   }
 
   async clear(): Promise<void> {
     if (!this.enabled) return;
     try {
-      const files = await readdir(this.cacheDir);
-      await Promise.all(files.filter((f) => f.endsWith('.cache')).map((f) => unlink(join(this.cacheDir, f))));
+      await clearCacheFiles(this.cacheDir);
     } catch {
       // Directory does not exist or is not readable — nothing to clear
     }
-  }
-
-  private getCacheFilePath(url: string): string {
-    const hash = createHash('md5').update(url).digest('hex');
-    return join(this.cacheDir, `${hash}.cache`);
   }
 }

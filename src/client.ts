@@ -1,6 +1,5 @@
-import { tmpdir } from 'node:os';
-import { join } from 'node:path';
 import type { FetchFn } from './api/projects.js';
+import { getDefaultCacheDir } from './node-env.js';
 import { ProjectsAPI } from './api/projects.js';
 import { ResearchersAPI } from './api/researchers.js';
 import { ResponseCache } from './cache.js';
@@ -58,7 +57,7 @@ export class KakenApiClient {
       fetchFn = fetch,
     } = options;
 
-    const cacheDir = options.cacheDir ?? (useCache ? join(tmpdir(), 'kaken-api-cache') : '');
+    const cacheDir = options.cacheDir ?? (useCache ? getDefaultCacheDir() : '');
 
     this.cache = new ResponseCache(cacheDir, useCache);
 
