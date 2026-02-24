@@ -47,6 +47,20 @@ describe('KakenApiClient', () => {
 
       expect(client.cache).toBeInstanceOf(ResponseCache);
     });
+
+    it('should initialize cache with empty cacheDir when useCache is false (browser compat)', () => {
+      // When useCache is false, no Node.js path computation (tmpdir) should occur,
+      // so cacheDir must be empty string rather than a filesystem path.
+      const client = new KakenApiClient({ useCache: false });
+      const cacheInstance = client.cache as unknown as { cacheDir: string };
+      expect(cacheInstance.cacheDir).toBe('');
+    });
+
+    it('should compute cacheDir with tmpdir when useCache is true and no cacheDir provided', () => {
+      const client = new KakenApiClient({ useCache: true });
+      const cacheInstance = client.cache as unknown as { cacheDir: string };
+      expect(cacheInstance.cacheDir).toContain('kaken-api-cache');
+    });
   });
 
   describe('cachedFetch', () => {
