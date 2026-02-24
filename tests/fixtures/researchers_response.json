@@ -5,24 +5,41 @@
   "researchers": [
     {
       "accn": "1000000001",
+      "id:person:erad": ["80802743"],
+      "id:person:jglobal": ["12345678"],
+      "id:person:researchmap": ["rm123456"],
+      "id:orcid": ["0000-0001-2345-6789"],
       "name": {
         "name:familyName": [
           { "lang": "ja", "text": "田中" },
+          { "lang": "ja-Kana", "text": "タナカ" },
           { "lang": "en", "text": "Tanaka" }
         ],
         "name:givenName": [
           { "lang": "ja", "text": "太郎" },
+          { "lang": "ja-Kana", "text": "タロウ" },
           { "lang": "en", "text": "Taro" }
         ]
       },
       "affiliations:current": [
         {
+          "sequence": 1,
+          "since": {
+            "commonEra:year": 2020,
+            "month": 4,
+            "day": 1
+          },
+          "until": {
+            "commonEra:year": 2025,
+            "month": 3,
+            "day": 31
+          },
           "affiliation:institution": {
             "humanReadableValue": [
               { "lang": "ja", "text": "東京大学" },
               { "lang": "en", "text": "The University of Tokyo" }
             ],
-            "id:institution:kakenhi": "32616",
+            "id:institution:erad": "2112601000",
             "category:institution:kakenhi": "university"
           },
           "affiliation:department": {
@@ -30,14 +47,71 @@
               { "lang": "ja", "text": "工学部" },
               { "lang": "en", "text": "Faculty of Engineering" }
             ],
-            "id:department:mext": "12345"
+            "id:department:erad": "012"
           },
           "affiliation:jobTitle": {
             "humanReadableValue": [
               { "lang": "ja", "text": "教授" },
               { "lang": "en", "text": "Professor" }
             ],
-            "id:jobTitle:mext": "67890"
+            "id:jobTitle:erad": "0001"
+          }
+        }
+      ],
+      "affiliations:history": [
+        {
+          "sequence": 1,
+          "since": {
+            "commonEra:year": 2015,
+            "month": 4,
+            "day": 1
+          },
+          "until": {
+            "commonEra:year": 2020,
+            "month": 3,
+            "day": 31
+          },
+          "affiliation:institution": {
+            "humanReadableValue": [
+              { "lang": "ja", "text": "京都大学" },
+              { "lang": "en", "text": "Kyoto University" }
+            ],
+            "id:institution:mext": "14301"
+          },
+          "affiliation:department": {
+            "humanReadableValue": [
+              { "lang": "ja", "text": "理学部" }
+            ]
+          },
+          "affiliation:jobTitle": {
+            "humanReadableValue": [
+              { "lang": "ja", "text": "助教" }
+            ]
+          }
+        }
+      ],
+      "work:project": [
+        {
+          "recordSource": {
+            "id:project:kakenhi": ["KAKENHI-PROJECT-20K00001"]
+          },
+          "title": [
+            {
+              "humanReadableValue": [
+                { "text": "テスト研究プロジェクト", "lang": "ja" },
+                { "text": "Test Research Project", "lang": "en" }
+              ]
+            }
+          ]
+        }
+      ],
+      "work:product": [
+        {
+          "accn": ["id:product:kakenhi**12345"],
+          "resourceType": "Journal Article",
+          "title:main": {
+            "text": "テスト論文タイトル",
+            "lang": "ja"
           }
         }
       ]

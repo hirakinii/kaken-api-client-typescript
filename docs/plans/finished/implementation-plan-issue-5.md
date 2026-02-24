@@ -170,7 +170,7 @@ id, awardNumber, projectType, title
 
 TDD（RED → GREEN → REFACTOR）を遵守する。
 
-### Step 1: `Allocation` 新規インターフェース追加
+### Step 1: `Allocation` 新規インターフェース追加　→　完了
 
 **目的:** `Project.allocationType: string` を `allocations?: Allocation[]` に置き換えるための型定義
 
@@ -187,7 +187,7 @@ export interface Allocation {
 
 ---
 
-### Step 2: `AwardAmount` インターフェース修正
+### Step 2: `AwardAmount` インターフェース修正　→　完了
 
 ```typescript
 /** Currency unit information. */
@@ -215,7 +215,7 @@ export interface AwardAmount {
 
 ---
 
-### Step 3: `ResearcherRole` インターフェース修正
+### Step 3: `ResearcherRole` インターフェース修正　→　完了
 
 ```typescript
 /** Researcher role within a project. */
@@ -236,7 +236,7 @@ export interface ResearcherRole {
 
 ---
 
-### Step 4: `ProjectStatus` 修正
+### Step 4: `ProjectStatus` 修正　→　完了
 
 ```typescript
 export interface ProjectStatus {
@@ -249,7 +249,7 @@ export interface ProjectStatus {
 
 ---
 
-### Step 5: `PeriodOfAward` 修正
+### Step 5: `PeriodOfAward` 修正　→　完了
 
 ```typescript
 export interface PeriodOfAward {
@@ -264,7 +264,7 @@ export interface PeriodOfAward {
 
 ---
 
-### Step 6: `Project` インターフェース修正
+### Step 6: `Project` インターフェース修正　→　完了
 
 ```typescript
 export interface Project {
@@ -299,7 +299,7 @@ export interface ProjectIdentifier {
 
 ---
 
-### Step 7: LOW PRIORITY 修正（`Field`, `Keyword`, `Institution`）
+### Step 7: LOW PRIORITY 修正（`Field`, `Keyword`, `Institution`）　→　完了
 
 ```typescript
 export interface Field {
@@ -323,7 +323,7 @@ export interface Institution {
 
 ---
 
-### Step 8: `parseProject` 拡張（`src/api/projects.ts`）
+### Step 8: `parseProject` 拡張（`src/api/projects.ts`）　→　完了
 
 `summary` が日英配列であることを考慮し、`ja` 優先で言語選択するロジックを実装する。
 

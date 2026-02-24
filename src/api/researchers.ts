@@ -9,6 +9,8 @@ import type {
   Department,
   JobTitle,
   PersonName,
+  Project,
+  Product,
 } from '../models/index.js';
 import { buildUrl } from '../utils.js';
 
@@ -33,6 +35,26 @@ interface ResearchersJsonResponse {
 
 /** Raw researcher entry from the JSON response. */
 type ResearcherData = Record<string, unknown>;
+
+/** Priority-ordered institution ID keys. */
+const INSTITUTION_ID_KEYS = [
+  'id:institution:erad',
+  'id:institution:kakenhi',
+  'id:institution:mext',
+  'id:institution:jsps',
+  'id:institution:jst',
+] as const;
+
+/** Priority-ordered department ID keys. */
+const DEPARTMENT_ID_KEYS = [
+  'id:department:erad',
+  'id:department:mext',
+  'id:department:jsps',
+  'id:department:jst',
+] as const;
+
+/** Priority-ordered job title ID keys. */
+const JOB_TITLE_ID_KEYS = ['id:jobTitle:erad', 'id:jobTitle:mext', 'id:jobTitle:jsps', 'id:jobTitle:jst'] as const;
 
 /** API client for searching KAKEN researchers. */
 export class ResearchersAPI {
@@ -189,7 +211,7 @@ export class ResearchersAPI {
   private parseResearcher(data: ResearcherData): Researcher {
     const researcher: Researcher = {
       ...(typeof data.accn === 'string' && { id: data.accn }),
-      affiliations: [],
+      currentAffiliations: [],
       rawData: data,
     };
 
@@ -199,29 +221,81 @@ export class ResearchersAPI {
       researcher.name = this.parsePersonName(nameData);
     }
 
+    // Parse person identifiers
+    const eradIds = data['id:person:erad'] as unknown[] | undefined;
+    if (Array.isArray(eradIds) && eradIds.length > 0 && typeof eradIds[0] === 'string') {
+      researcher.eradResearcherNumber = eradIds[0];
+    }
+
+    const jglobalIds = data['id:person:jglobal'] as unknown[] | undefined;
+    if (Array.isArray(jglobalIds) && jglobalIds.length > 0 && typeof jglobalIds[0] === 'string') {
+      researcher.jglobalId = jglobalIds[0];
+    }
+
+    const researchmapIds = data['id:person:researchmap'] as unknown[] | undefined;
+    if (Array.isArray(researchmapIds) && researchmapIds.length > 0 && typeof researchmapIds[0] === 'string') {
+      researcher.researchmapId = researchmapIds[0];
+    }
+
+    const orcidIds = data['id:orcid'] as unknown[] | undefined;
+    if (Array.isArray(orcidIds) && orcidIds.length > 0 && typeof orcidIds[0] === 'string') {
+      researcher.orcid = orcidIds[0];
+    }
+
     // Parse current affiliations
     const currentAffiliations = data['affiliations:current'];
     if (Array.isArray(currentAffiliations)) {
       for (const item of currentAffiliations) {
         const affiliation = this.parseAffiliation(item as ResearcherData);
         if (affiliation) {
-          researcher.affiliations!.push(affiliation);
+          researcher.currentAffiliations!.push(affiliation);
         }
       }
+    }
+
+    // Parse historical affiliations
+    const historicalAffiliations = data['affiliations:history'];
+    if (Array.isArray(historicalAffiliations)) {
+      researcher.historicalAffiliations = [];
+      for (const item of historicalAffiliations) {
+        const affiliation = this.parseAffiliation(item as ResearcherData);
+        if (affiliation) {
+          researcher.historicalAffiliations.push(affiliation);
+        }
+      }
+    }
+
+    // Parse projects from work:project
+    const workProjects = data['work:project'];
+    if (Array.isArray(workProjects)) {
+      researcher.projects = workProjects.map((item) => this.parseProject(item as ResearcherData));
+    }
+
+    // Parse products from work:product
+    const workProducts = data['work:product'];
+    if (Array.isArray(workProducts)) {
+      researcher.products = workProducts.map((item) => this.parseProduct(item as ResearcherData));
     }
 
     return researcher;
   }
 
   private parsePersonName(nameData: Record<string, unknown>): PersonName {
-    const familyName = this.extractLocalizedText(nameData['name:familyName'] as unknown[]);
-    const givenName = this.extractLocalizedText(nameData['name:givenName'] as unknown[]);
+    const familyNameValues = nameData['name:familyName'] as unknown[] | undefined;
+    const givenNameValues = nameData['name:givenName'] as unknown[] | undefined;
+
+    const familyName = this.extractLocalizedText(familyNameValues);
+    const givenName = this.extractLocalizedText(givenNameValues);
+    const familyNameReading = this.extractKanaText(familyNameValues);
+    const givenNameReading = this.extractKanaText(givenNameValues);
     const fullName = familyName && givenName ? `${familyName} ${givenName}` : (familyName ?? givenName ?? 'Unknown');
 
     return {
       fullName,
       ...(familyName !== undefined && { familyName }),
       ...(givenName !== undefined && { givenName }),
+      ...(familyNameReading !== undefined && { familyNameReading }),
+      ...(givenNameReading !== undefined && { givenNameReading }),
     };
   }
 
@@ -236,10 +310,17 @@ export class ResearchersAPI {
 
     if (!institution && !department && !jobTitle) return undefined;
 
+    const sequence = typeof data.sequence === 'number' ? data.sequence : undefined;
+    const startDate = this.parseDateFromEra(data.since as Record<string, unknown> | undefined);
+    const endDate = this.parseDateFromEra(data.until as Record<string, unknown> | undefined);
+
     return {
+      ...(sequence !== undefined && { sequence }),
       ...(institution !== undefined && { institution }),
       ...(department !== undefined && { department }),
       ...(jobTitle !== undefined && { jobTitle }),
+      ...(startDate !== undefined && { startDate }),
+      ...(endDate !== undefined && { endDate }),
     };
   }
 
@@ -247,9 +328,11 @@ export class ResearchersAPI {
     const name = this.extractLocalizedText(data.humanReadableValue as unknown[]);
     if (!name) return undefined;
 
+    const code = INSTITUTION_ID_KEYS.map((k) => data[k]).find((v) => typeof v === 'string') as string | undefined;
+
     return {
       name,
-      ...(typeof data['id:institution:kakenhi'] === 'string' && { code: data['id:institution:kakenhi'] }),
+      ...(code !== undefined && { code }),
       ...(typeof data['category:institution:kakenhi'] === 'string' && { type: data['category:institution:kakenhi'] }),
     };
   }
@@ -258,9 +341,11 @@ export class ResearchersAPI {
     const name = this.extractLocalizedText(data.humanReadableValue as unknown[]);
     if (!name) return undefined;
 
+    const code = DEPARTMENT_ID_KEYS.map((k) => data[k]).find((v) => typeof v === 'string') as string | undefined;
+
     return {
       name,
-      ...(typeof data['id:department:mext'] === 'string' && { code: data['id:department:mext'] }),
+      ...(code !== undefined && { code }),
     };
   }
 
@@ -268,10 +353,61 @@ export class ResearchersAPI {
     const name = this.extractLocalizedText(data.humanReadableValue as unknown[]);
     if (!name) return undefined;
 
+    const code = JOB_TITLE_ID_KEYS.map((k) => data[k]).find((v) => typeof v === 'string') as string | undefined;
+
     return {
       name,
-      ...(typeof data['id:jobTitle:mext'] === 'string' && { code: data['id:jobTitle:mext'] }),
+      ...(code !== undefined && { code }),
     };
+  }
+
+  /** Partially parses a work:project entry, storing the full raw data. */
+  private parseProject(data: ResearcherData): Project {
+    const recordSource = data.recordSource as Record<string, unknown> | undefined;
+    const projectIds = recordSource?.['id:project:kakenhi'] as string[] | undefined;
+    const id = Array.isArray(projectIds) && projectIds.length > 0 ? projectIds[0] : undefined;
+
+    const titleEntries = Array.isArray(data.title) ? data.title : [];
+    const firstTitleEntry = titleEntries.length > 0 ? (titleEntries[0] as Record<string, unknown>) : undefined;
+    const titleValues = firstTitleEntry?.humanReadableValue as unknown[] | undefined;
+    const title = this.extractLocalizedText(titleValues);
+    const titleEn = this.extractEnglishText(titleValues);
+
+    return {
+      ...(id !== undefined && { id }),
+      ...(title !== undefined && { title }),
+      ...(titleEn !== undefined && { titleEn }),
+      rawData: data,
+    };
+  }
+
+  /** Partially parses a work:product entry, storing the full raw data. */
+  private parseProduct(data: ResearcherData): Product {
+    const accnArr = data.accn as unknown[] | undefined;
+    const id = Array.isArray(accnArr) && accnArr.length > 0 && typeof accnArr[0] === 'string' ? accnArr[0] : undefined;
+    const type = typeof data.resourceType === 'string' ? data.resourceType : undefined;
+    const titleMain = data['title:main'] as Record<string, unknown> | undefined;
+    const title = typeof titleMain?.text === 'string' ? titleMain.text : undefined;
+
+    return {
+      ...(id !== undefined && { id }),
+      ...(type !== undefined && { type }),
+      ...(title !== undefined && { title }),
+      rawData: data,
+    };
+  }
+
+  /**
+   * Builds a Date from a `{ "commonEra:year": YYYY, "month": M, "day": D }` object.
+   * Returns undefined if the year is not a number.
+   */
+  private parseDateFromEra(data: Record<string, unknown> | undefined): Date | undefined {
+    if (!data) return undefined;
+    const year = data['commonEra:year'];
+    if (typeof year !== 'number') return undefined;
+    const month = typeof data.month === 'number' ? data.month - 1 : 0; // JS months are 0-based
+    const day = typeof data.day === 'number' ? data.day : 1;
+    return new Date(year, month, day);
   }
 
   /**
@@ -287,5 +423,27 @@ export class ResearchersAPI {
 
     const entry = jaEntry ?? (values[0] as Record<string, unknown>);
     return typeof entry?.text === 'string' ? entry.text : undefined;
+  }
+
+  /** Extracts text from a localized value array for the 'en' language entry. */
+  private extractEnglishText(values: unknown[] | undefined): string | undefined {
+    if (!Array.isArray(values) || values.length === 0) return undefined;
+
+    const enEntry = values.find(
+      (v) => typeof v === 'object' && v !== null && (v as Record<string, unknown>).lang === 'en',
+    ) as Record<string, unknown> | undefined;
+
+    return typeof enEntry?.text === 'string' ? enEntry.text : undefined;
+  }
+
+  /** Extracts text from a localized value array for the 'ja-Kana' language entry. */
+  private extractKanaText(values: unknown[] | undefined): string | undefined {
+    if (!Array.isArray(values) || values.length === 0) return undefined;
+
+    const kanaEntry = values.find(
+      (v) => typeof v === 'object' && v !== null && (v as Record<string, unknown>).lang === 'ja-Kana',
+    ) as Record<string, unknown> | undefined;
+
+    return typeof kanaEntry?.text === 'string' ? kanaEntry.text : undefined;
   }
 }
