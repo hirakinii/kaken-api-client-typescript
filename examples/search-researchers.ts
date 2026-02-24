@@ -45,8 +45,8 @@ try {
 console.log('\n=== Example 2: Search by keyword and institution ===');
 try {
   const result = await client.researchers.search({
-    keyword: 'quantum computing',
-    language: 'en',
+    keyword: '量子',
+    language: 'ja',
     researcherInstitution: '京都大学',
     resultsPerPage: 5,
   });

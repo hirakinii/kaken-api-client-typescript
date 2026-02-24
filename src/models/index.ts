@@ -18,6 +18,8 @@ export interface Institution {
   name: string;
   code?: string;
   type?: string;
+  /** Fiscal years of participation in the project context (e.g. "2020-2024"). */
+  participate?: string;
 }
 
 /** Department information. */
@@ -63,17 +65,20 @@ export interface Field {
   path?: string;
   code?: string;
   fieldTable?: string;
+  sequence?: number;
 }
 
 /** Keyword with language tag. */
 export interface Keyword {
   text: string;
+  /** Language tag. Note: reliability is low — the API may emit "und" (undetermined) for all entries. */
   language?: string;
 }
 
 /** Project status at a specific point in time. */
 export interface ProjectStatus {
   statusCode: string;
+  fiscalYear?: number;
   date?: Date;
   note?: string;
 }
@@ -84,23 +89,44 @@ export interface PeriodOfAward {
   endDate?: Date;
   startFiscalYear?: number;
   endFiscalYear?: number;
+  searchStartFiscalYear?: number;
+  searchEndFiscalYear?: number;
 }
 
-/** Award amount for a given fiscal year. */
+/** Currency unit information. */
+export interface CurrencyUnit {
+  originalValue: string;
+  normalizedValue?: string;
+}
+
+/** Award amount for the overall project. */
 export interface AwardAmount {
   totalCost?: number;
   directCost?: number;
   indirectCost?: number;
-  fiscalYear?: number;
-  currency?: string;
+  convertedJpyTotalCost?: number;
+  unit?: CurrencyUnit;
   planned?: boolean;
+  caption?: string;
+  userDefinedId?: string;
+}
+
+/** Allocation type for a research project. */
+export interface Allocation {
+  name: string;
+  code?: string;
+  participate?: string;
 }
 
 /** Researcher role within a project. */
 export interface ResearcherRole {
-  researcher: Researcher;
   role: string;
   participate?: string;
+  sequence?: number;
+  researcherNumber?: string;
+  eradCode?: string;
+  name?: PersonName;
+  affiliations?: Affiliation[];
 }
 
 /** Researcher information. */
@@ -118,9 +144,16 @@ export interface Researcher {
   rawData?: unknown;
 }
 
+/** Project identifier such as DOI or unified project number. */
+export interface ProjectIdentifier {
+  type: string;
+  value: string;
+}
+
 /** Project (research grant) information. */
 export interface Project {
   id?: string;
+  recordSet?: string;
   awardNumber?: string;
   title?: string;
   titleEn?: string;
@@ -132,9 +165,12 @@ export interface Project {
   periodOfAward?: PeriodOfAward;
   projectStatus?: ProjectStatus;
   projectType?: string;
-  allocationType?: string;
+  allocations?: Allocation[];
   members?: ResearcherRole[];
   awardAmounts?: AwardAmount[];
+  created?: Date;
+  modified?: Date;
+  identifiers?: ProjectIdentifier[];
   rawData?: unknown;
 }
 

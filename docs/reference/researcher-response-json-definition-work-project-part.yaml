@@ -1,0 +1,325 @@
+- name: work:project
+  type: array
+  description: Research Project
+  notes: ''
+  children:
+    - name: recordSource
+      type: object
+      description: Data Source
+      notes: ''
+      children:
+        - name: id:project:kakenhi
+          type: ''
+          description: Research Project Number
+          notes: ''
+    - name: role
+      type: array
+      description: Researcher Role
+      notes: ''
+      children:
+        - name: humanReadableValue
+          type: object
+          description: Researcher Role, Value
+          notes: ''
+          children:
+            - name: lang
+              type: string
+              description: Researcher Role, Language
+              notes: iso639-1
+            - name: text
+              type: string
+              description: Researcher Role, Text
+              notes: ''
+        - name: code:roleInProject:kakenhi
+          type: string
+          description: Researcher Role, Code
+          notes: ''
+    - name: title
+      type: array
+      description: Research Project Title
+      notes: ''
+      children:
+        - name: humanReadableValue
+          type: array
+          description: Research Project Title, Value
+          notes: ''
+          children:
+            - name: lang
+              type: string
+              description: Research Project Title, Language
+              notes: iso639-1
+            - name: text
+              type: string
+              description: Research Project Title, Text
+              notes: ''
+    - name: field
+      type: array
+      description: Research Field
+      notes: ''
+      children:
+        - name: humanReadableValue
+          type: array
+          description: Research Field, Value
+          notes: ''
+          children:
+            - name: lang
+              type: string
+              description: Research Field, Language
+              notes: iso639-1
+            - name: text
+              type: string
+              description: Research Field, Text
+              notes: ''
+            - name: path
+              type: string
+              description: Research Field, Code (Indicate level)
+              notes: ''
+            - name: niiCode
+              type: string
+              description: Research Field, Code (NII Code)
+              notes: ''
+            - name: sequence
+              type: int
+              description: Research Field, Display Order
+              notes: >-
+                Indicates what number of field information within the same
+                project
+    - name: category
+      type: array
+      description: Category Type
+      notes: ''
+      children:
+        - name: humanReadableValue
+          type: array
+          description: Category Type, Value
+          notes: ''
+          children:
+            - name: lang
+              type: string
+              description: Category Type, Language
+              notes: iso639-1
+            - name: text
+              type: string
+              description: Category Type, Text
+              notes: ''
+            - name: path
+              type: string
+              description: Category Type, Code (Indicate level)
+              notes: ''
+            - name: niiCode
+              type: string
+              description: Category Type, Code (NII Code)
+              notes: ''
+    - name: institution
+      type: array
+      description: Research Institution
+      notes: ''
+      children:
+        - name: humanReadableValue
+          type: array
+          description: Research Institution, Value
+          notes: ''
+          children:
+            - name: lang
+              type: string
+              description: Research Institution, Language
+              notes: iso639-1
+            - name: text
+              type: string
+              description: Research Institution, Text
+              notes: ''
+            - name: niiCode
+              type: string
+              description: Research Institution, Code (NII Code)
+              notes: ''
+            - name: sequence
+              type: int
+              description: Research Institution, Display Order
+              notes: ''
+    - name: keyword
+      type: array
+      description: Keyword
+      notes: ''
+      children:
+        - name: humanReadableValue
+          type: array
+          description: Keyword, Value
+          notes: ''
+          children:
+            - name: lang
+              type: string
+              description: Keyword, Language
+              notes: iso639-1, "und" fixed
+            - name: text
+              type: string
+              description: Keyword, Text
+              notes: ''
+    - name: since
+      type: object
+      description: Project Period, Start Date
+      notes: ''
+      children:
+        - name: fiscal:year
+          type: object
+          description: Project Period, Start Date, Value
+          notes: ''
+          children:
+            - name: commonEra:year
+              type: string
+              description: Project Period, Start Date (Year)
+              notes: ''
+            - name: firstDate:month
+              type: int
+              description: Project Period, Start Date (Month)
+              notes: 4 fixed
+            - name: firstDate:day
+              type: int
+              description: Project Period, Start Date (Day)
+              notes: 1 fixed
+    - name: until
+      type: object
+      description: Project Period, End Date
+      notes: ''
+      children:
+        - name: fiscal:year
+          type: object
+          description: Project Period, End Date, Value
+          notes: ''
+          children:
+            - name: commonEra:year
+              type: string
+              description: Project Period, End Date (Year)
+              notes: ''
+    - name: projectStatus
+      type: object
+      description: Project Status
+      notes: ''
+      children:
+        - name: fiscal:year
+          type: object
+          description: Project Status, Applicable Date, Value
+          notes: ''
+          children:
+            - name: commonEra:year
+              type: string
+              description: Project Status, Applicable Date (Year)
+              notes: ''
+            - name: firstDate:month
+              type: int
+              description: Project Status, Applicable Date (Month)
+              notes: 4 fixed
+            - name: firstDate:day
+              type: int
+              description: Project Status, Applicable Date (Day)
+              notes: 1 fixed
+        - name: statusCode
+          type: string
+          description: Project Status, Code
+          notes: ''
+    - name: member
+      type: array
+      description: Researcher
+      notes: ''
+      children:
+        - name: id:person:erad
+          type: string
+          description: Researcher, eRad Code
+          notes: ''
+        - name: role
+          type: array
+          description: Researcher, Role
+          notes: ''
+          children:
+            - name: code:roleInProject:kakenhi
+              type: string
+              description: Researcher, Role, Code
+              notes: ''
+        - name: person:name
+          type: array
+          description: Researcher, Name
+          notes: ''
+          children:
+            - name: lang
+              type: string
+              description: Researcher, Name, Language
+              notes: ''
+            - name: text
+              type: string
+              description: Researcher, Text
+              notes: ''
+        - name: institution:name
+          type: array
+          description: Researcher, Affiliation
+          notes: ''
+          children:
+            - name: lang
+              type: string
+              description: Researcher, Affiliation, Language
+              notes: ''
+            - name: text
+              type: string
+              description: Researcher, Affiliation, Text
+              notes: ''
+        - name: department:name
+          type: array
+          description: Researcher, Department
+          notes: ''
+          children:
+            - name: lang
+              type: string
+              description: Researcher, Department, Language
+              notes: ''
+            - name: text
+              type: string
+              description: Researcher, Department, Text
+              notes: ''
+        - name: jobTitle
+          type: array
+          description: Researcher, Job Title
+          notes: ''
+          children:
+            - name: lang
+              type: string
+              description: Researcher, Job Title, Language
+              notes: ''
+            - name: text
+              type: string
+              description: Researcher, Job Title, Text
+              notes: ''
+        - name: sequence
+          type: int
+          description: Display Order
+          notes: ''
+- name: ongoing
+  type: object
+  description: Ongoing Project
+  notes: '"Ongoing Project" to display on the List of Search Results screen'
+  children:
+    - name: role
+      type: array
+      description: Ongoing Project, Researcher Role
+      notes: ''
+      children:
+        - name: code:roleInProject:kakenhi
+          type: string
+          description: Ongoing Project, Researcher Role, Code
+          notes: ''
+    - name: title
+      type: array
+      description: Ongoing Project, Project Title
+      notes: ''
+      children:
+        - name: humanReadableValue
+          type: array
+          description: Ongoing Project, Project Title, Value
+          notes: ''
+          children:
+            - name: lang
+              type: string
+              description: Ongoing Project, Project Title, Language
+              notes: ''
+            - name: text
+              type: string
+              description: Ongoing Project, Project Title, Text
+              notes: ''
+

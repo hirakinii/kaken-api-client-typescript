@@ -1,0 +1,2696 @@
+- name: grantAwardList
+  isAttribute: false
+  min: '1'
+  max: '1'
+  description: "Common Specification\r\n- If data is in both Japanese and English but only some of items are in English, the items with @sequence tag should have a corresponding @sequence number for the same data in Japanese and English."
+  children:
+    - name: grantAward
+      isAttribute: true
+      min: '0'
+      max: u
+      description: Research Project (per data）
+      children:
+        - name: '@id'
+          isAttribute: true
+          min: '1'
+          max: '1'
+          description: Unique ID given to each Research Project
+        - name: '@recordSet'
+          isAttribute: true
+          min: '1'
+          max: '1'
+          description: "Dataset\r\n = kakenhi : Grant-in-Aid for Scientific Research (Kakenhi)"
+        - name: '@projectType'
+          isAttribute: true
+          min: '0'
+          max: '1'
+          description: "Project Type\r\n  = area: Innovative Area\r\n  = project: Research Project (default)\r\n  = organizer: Organizer\r\n  = wrapup: Wrapup of Research Output\r\n  = planned: Planned Research\r\n  = publicly: Publicly Offered Research\r\n  = international: Supporting Group for International Activities"
+        - name: '@awardNumber'
+          isAttribute: true
+          min: '0'
+          max: '1'
+          description: Project Number (Unique number within the same @recordSet)
+        - name: identifier
+          isAttribute: false
+          min: '0'
+          max: u
+          description: Research Project Identifier
+          children:
+            - name: '@type'
+              isAttribute: true
+              min: '1'
+              max: '1'
+              description: "Identifier Type\r\n = doi: DOI\r\n = nationalAwardNumber: Unified Project Number"
+            - name: normalizedValue
+              isAttribute: false
+              min: '1'
+              max: '1'
+              description: Normalised Value
+        - name: created
+          isAttribute: false
+          min: '1'
+          max: '1'
+          description: >-
+            Initial Data Creation Date (YYYY-MM-DDTHH:MI:SSZ), ISO8601 format,
+            GMT, with Z at the end
+        - name: modified
+          isAttribute: false
+          min: '0'
+          max: '1'
+          description: >-
+            Data Modification Date (YYYY-MM-DDTHH:MI:SSZ), ISO8601 format, GMT,
+            with Z at the end
+        - name: parentAward
+          isAttribute: false
+          min: '0'
+          max: '1'
+          description: Specify Parent’s Research Project
+          children:
+            - name: '@id'
+              isAttribute: true
+              min: '0'
+              max: '1'
+              description: Parent’s grantAward@id (Parent ID of the Area’s/Group’s Project)
+            - name: title
+              isAttribute: false
+              min: '1'
+              max: '2'
+              description: Parent’s Research Project Title
+              children:
+                - name: '@xml:lang'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "= ja: Japanese \r\n  = en : English"
+        - name: summary
+          isAttribute: false
+          min: '1'
+          max: '2'
+          description: >-
+            The latest Project Information with all submitted contents
+            synthesised
+          children:
+            - name: '@xml:lang'
+              isAttribute: true
+              min: '0'
+              max: '1'
+              description: "= ja: Japanese \r\n  = en : English"
+            - name: title
+              isAttribute: false
+              min: '0'
+              max: '1'
+              description: Research Project Title
+            - name: titleAbbreviated
+              isAttribute: false
+              min: '0'
+              max: '1'
+              description: Research Project Title (Abbreviation)
+            - name: awardNumber
+              isAttribute: false
+              min: '0'
+              max: u
+              description: Project Number that exists within Research Project
+              children:
+                - name: '@awardNumber'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Value of Project Number
+                - name: '@participate'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "String for Year Range\r\nex) 2000 / 2000-2001 / 2000,2002"
+                - name: '@sequence'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Appearance Priority (>=1)
+            - name: category
+              isAttribute: false
+              min: '0'
+              max: u
+              description: "System/Project or Category Type Title\r\nRepeat the System/Project element (as many times as needed)"
+              children:
+                - name: '@path'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: >-
+                    Assign value by listing code values of each System/Project
+                    in a hierarchical order
+                - name: '@niiCode'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "System/Project Title Code\r\nAssign code value in order to display the level -> Uniquely assigned code without indicating the hierarchy"
+            - name: categoryFc
+              isAttribute: false
+              min: '0'
+              max: '1'
+              description: >-
+                System/Project corresponding to Research Project (Unique
+                System/Project Title for facet)
+              children:
+                - name: '@path'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: >-
+                    Assign value by listing code values of each System/Project
+                    in a hierarchical order
+                - name: '@niiCode'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "System/Project Title Code\r\nAssign code value in order to display the level -> Uniquely assigned code without indicating the hierarchy"
+            - name: section
+              isAttribute: false
+              min: '0'
+              max: '1'
+              description: Section Title
+              children:
+                - name: '@niiCode'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: Section Code (NII Code)
+            - name: field
+              isAttribute: false
+              min: '0'
+              max: u
+              description: Research Field Title
+              children:
+                - name: '@sequence'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: "Appearance Priority(>=1)\r\nDetermine the correspondence of Japanese and English by the correspondence of ‘sequence’."
+                - name: '@path'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: >-
+                    Assign value by listing code values of each Research Field
+                    in a hierarchical order
+                - name: '@niiCode'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: Research Field Code(NII Code)
+                - name: '@fieldTable'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: "Research Field Type\r\n  = saimoku: Research Fields\r\n  = jigentsuki_saimoku: Research Fields with a Time Limit\r\n  = tokusetsu_bunya: Focused Research Fields\r\n  = senmon_bunya: Specialized Research Fields\r\n  = zantei_bunya: The Area of Research for the Screening"
+            - name: review_section
+              isAttribute: false
+              min: '0'
+              max: u
+              description: Review Section Table (Title)
+              children:
+                - name: '@sequence'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: "Appearance Priority(>=1)\r\nDetermine the correspondence of Japanese and English data by the correspondence of ‘sequence’"
+                - name: '@niiCode'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Review Section Code (NII Code)
+                - name: '@tableType'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Review Section Table Type
+            - name: institution
+              isAttribute: false
+              min: '0'
+              max: u
+              description: Research Institution Name
+              children:
+                - name: '@niiCode'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: Research Institution Code(NII Code)
+                - name: '@type'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Research Institution Type\r\n  = academic: Academic Institution\r\n  = industry: Private Company"
+                - name: '@participate'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Year(s) Institution involved in Research Project\r\n Involved only in 2000: 2000\r\n Involved between 2000 and 2002: 2000-2002\r\n Involved in 2000 and 2002: 2000,2002"
+                - name: '@sequence'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Display Order of Institutions within the project
+            - name: agency
+              isAttribute: false
+              min: '1'
+              max: '1'
+              description: Funding Agency Name
+              children:
+                - name: '@niiCode'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Funding Agency ID\r\n = kakenhi : Grant-in-Aid for Scientific Research (Kakenhi)"
+            - name: allocation
+              isAttribute: false
+              min: '0'
+              max: u
+              description: Allocation Type Title
+              children:
+                - name: '@niiCode'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Allocation Type Code
+                - name: '@participate'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Involved only in 2000: 2000\r\n Involved between 2000 and 2002: 2000-2002\r\n Involved in 2000 and 2002: 2000,2002"
+                - name: '@sequence'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Appearance Priority(>=1)
+            - name: member
+              isAttribute: false
+              min: '0'
+              max: u
+              description: "Describe Researcher in the order of the following roles\r\n  1. area_organizer\r\n  2. principal_investigator\r\n  3. host_researcher\r\n  4. research_fellow\r\n  5. principal_investigator_support\r\n  x. Other than those above"
+              children:
+                - name: '@sequence'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: "Appearance Priority(>=1)\r\nThe same Researcher Information in Japanese and English can be determined by corresponding the same sequence value"
+                - name: '@participate'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Year(s) Researcher involved in Research Project, Year(s) Researcher Information appeared\r\n Involved only in 2000: 2000\r\n Involved between 2000 and 2002: 2000-2002\r\n Involved in 2000 and 2002: 2000,2002"
+                - name: '@researcherNumber'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: Unified Researcher Number
+                - name: '@eradCode'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: eRad Code
+                - name: '@role'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Researcher Role
+                - name: institution
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Affiliated Institutuion (Deprecated)
+                  children:
+                    - name: '@institutionType'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Research Institution Type\r\n  = academic: Academic Institution\r\n  = industry: Private Company"
+                    - name: '@niiCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: '@niiCode'
+                - name: department
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Affiliated Department (Deprecated)
+                  children:
+                    - name: '@niiCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: '@niiCode'
+                - name: jobTitle
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Job Title at the Affiliation (Deprecated)
+                  children:
+                    - name: '@niiCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: '@niiCode'
+                - name: affiliation
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Institution/Department/Job Title
+                  children:
+                    - name: '@sequence'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: Appearance Priority (>=1)
+                    - name: institution
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: Affiliated Institutuion
+                      children:
+                        - name: '@institutionType'
+                          isAttribute: true
+                          min: '0'
+                          max: '1'
+                          description: "Research Institution Type\r\n  = academic: Academic Institution\r\n  = industry: Private Company"
+                        - name: '@niiCode'
+                          isAttribute: true
+                          min: '0'
+                          max: '1'
+                          description: '@niiCode'
+                    - name: department
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: Affiliated Department
+                      children:
+                        - name: '@niiCode'
+                          isAttribute: true
+                          min: '0'
+                          max: '1'
+                          description: '@niiCode'
+                    - name: jobTitle
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: Job Title at the Affiliation
+                      children:
+                        - name: '@niiCode'
+                          isAttribute: true
+                          min: '0'
+                          max: '1'
+                          description: '@niiCode'
+                - name: personalName
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Researcher Name
+                  children:
+                    - name: '@sequence'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: "Appearance Priority (>=1)\r\n '1' is for main description on Researcher Name, and others for description of other names"
+                    - name: fullName
+                      isAttribute: false
+                      min: '1'
+                      max: '1'
+                      description: >-
+                        Full Name (Insert a en space between Family Name and
+                        Given Name)
+                    - name: familyName
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: Family Name
+                      children:
+                        - name: '@yomi'
+                          isAttribute: true
+                          min: '0'
+                          max: '1'
+                          description: Family Name (yomi)
+                    - name: givenName
+                      isAttribute: false
+                      min: '1'
+                      max: '1'
+                      description: Given Name
+                      children:
+                        - name: '@yomi'
+                          isAttribute: true
+                          min: '0'
+                          max: '1'
+                          description: Given Name (yomi)
+                - name: memberStatus
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Researcher’s Status Information
+                  children:
+                    - name: '@statusCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: Status Code
+                - name: enriched
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: >-
+                    ‘Researcher Code indicating this researcher’, generated
+                    based on the external information
+                  children:
+                    - name: researcherNumber
+                      isAttribute: false
+                      min: '1'
+                      max: u
+                      description: Researcher Code
+                      children:
+                        - name: '@type'
+                          isAttribute: true
+                          min: '1'
+                          max: '1'
+                          description: Code Type. Only support ‘erad’ at the moment.
+            - name: projectStatus
+              isAttribute: false
+              min: '0'
+              max: '1'
+              description: "Project Status\r\nOutput only one attribute except ‘note’"
+              children:
+                - name: '@fiscalYear'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: >-
+                    Set grant@fiscalYear or report@fiscalYear at the time of
+                    producing ‘summary’
+                - name: '@statusCode'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: "Research Project’s Status\r\n = adopted: Adopted\r\n = granted: Granted\r\n = ceased: Ceased\r\n = suspended: Suspended\r\n = project_closed: Completed\r\n = declined: Declined\r\n = discontinued: Discontinued"
+                - name: '@date'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: Date (YYYY-MM-DD)
+                - name: note
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Reasons for changing the status
+            - name: keywordList
+              isAttribute: false
+              min: '0'
+              max: '1'
+              description: Keywords Set (Merge all Keywords appear in the project)
+              children:
+                - name: keyword
+                  isAttribute: false
+                  min: '1'
+                  max: u
+                  description: Keywords
+                  children:
+                    - name: '@sequence'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: Appearance Priority (>=1)
+            - name: paragraphList
+              isAttribute: false
+              min: '0'
+              max: u
+              description: Paragraph Set for each Paragraph Type
+              children:
+                - name: '@sequecne'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Priority for each Paragraph Set
+                - name: '@parentId'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Original Parent ID of paragraphList included in ‘summary’
+                - name: '@type'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: "Paragraph Type\r\n  = purpose: Research Purpose\r\n  = abstract: Research Outline\r\n  = outline_of_research_achievement: Outline of Research Output\r\n  = outline_of_research_performance: Outline of Research Performance\r\n  = implementation_schedule: Research Plan (Current FY)\r\n  = progress: Progress to date\r\n  = planning_scheme: Future Research Plan\r\n  = planning_budget_expenditure: Research Budget Plan (Next FY)\r\n  = plan_of_carry_over: Carry-over Expenditure Plan (Next FY)\r\n  = significance_of_research_achievement: Academic Significance and Societal Importance of the Research Achievements\r\n  = outline_of_research_initial: Outline of Research at the Start"
+                - name: paragraph
+                  isAttribute: false
+                  min: '1'
+                  max: u
+                  description: Individual Paragraph Text
+                  children:
+                    - name: '@sequence'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: Appearance Priority(>=1)
+            - name: classification
+              isAttribute: false
+              min: '0'
+              max: u
+              description: "Include all ‘classifications’ that has the following ‘types’\r\n\r\n1. inspection\r\n2. assessment\r\n3. remark_jigo\r\n4. remark_chukan\r\n\r\nFor the ‘classification’ that has the following ‘type’, include only the latest ‘classification’\r\n\r\n1. progress"
+              children:
+                - name: '@id'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Classification ID
+                - name: '@type'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: "Classification Type\r\n  = inspection: Verification Results\r\n  = assessment: Assessment Results\r\n  = remark_jigo: Comments (Ex-post Assessment)\r\n  = remark_chukan: Comments (Interim Assessment)\r\n  = progress: Progress to date"
+                - name: '@statusCode'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Contents for each Classification Type
+                - name: '@sequence'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Appearance Priority (>=1)
+            - name: periodOfAward
+              isAttribute: false
+              min: '0'
+              max: '1'
+              description: "Project Period\r\nOutput only one regardless of summary@lang"
+              children:
+                - name: '@searchStartFiscalYear'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Research Start Year for search purposes. Output only one regardless of summary@lang.\r\nIf there are multiple summary@lang, adopt \"ja\" by priority. \r\nCreate from Start Date, Start Year"
+                - name: '@searchEndFiscalYear'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Research End Year for search purposes \r\nCreate from End Date, End Year"
+                - name: startDate
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Start Date (YYYY-MM-DD)
+                - name: endDate
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: End Date (YYYY-MM-DD)
+                  children:
+                    - name: '@estimated'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Predetermined Flag\r\n  = false: Fixed\r\n  = true: Estimated"
+                    - name: '@nondisclosure'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Unpublicised Flag\r\n = true: Unpublicised"
+                - name: startFiscalYear
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Start Year (YYYY)
+                - name: endFiscalYear
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: End Year (YYYY)
+                  children:
+                    - name: '@estimated'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Predetermined Flag\r\n  = false: Fixed\r\n  = true: Estimated"
+                    - name: '@nondisclosure'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Unpublicised Flag\r\n = true: Unpublicised"
+            - name: overallAwardAmount
+              isAttribute: false
+              min: '0'
+              max: u
+              description: Award Amount (Total)
+              children:
+                - name: '@planned'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Award Amount Flag \r\n  = false: Allocated Amount (default)\r\n  = true: Planned Amount"
+                - name: '@sequence'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Appearance Priority (>=1)
+                - name: '@userDefiendId'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: Award Amount (Total) ID
+                - name: '@caption'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Title of this Award Amount
+                - name: directCost
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Overall Direct Cost (Project’s Total Cost)
+                - name: indirectCost
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Overall Indirect Cost (Project’s Total Cost)
+                - name: totalCost
+                  isAttribute: false
+                  min: '1'
+                  max: '1'
+                  description: Total Cost (Project’s Total Cost)
+                - name: convertedJpyTotalCost
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Converted Total Cost in Japanese yen
+                - name: unit
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: A currency unit.
+                  children:
+                    - name: originalValue
+                      isAttribute: false
+                      min: '1'
+                      max: '1'
+                      description: For display purpose
+                    - name: normalizedValue
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: Normalised Value
+        - name: grantList
+          isAttribute: false
+          min: '0'
+          max: '1'
+          description: Adopted Project/Granted List
+          children:
+            - name: grant
+              isAttribute: false
+              min: '1'
+              max: u
+              description: Adopted Project/Granted
+              children:
+                - name: '@id'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: >-
+                    Unique ID for each data; however, assign the same ID for the
+                    same data in Japanese and English.
+                - name: '@xml:lang'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "= ja: Japanese \r\n  = en : English"
+                - name: '@fiscalYear'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: Applicable Fiscal Year
+                - name: '@sequence'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Appearance Priority (>=1)
+                - name: '@continued'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "New/Continued Section (Deprecated）\r\n  = false: New (default)\r\n  = true: Continued"
+                - name: title
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Research Project Title
+                - name: titleAlternative
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: >-
+                    Research Project Title (Other Titles).　To be used only for
+                    search.
+                - name: titleAbbreviated
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Research Project Title (Abbreviation)
+                - name: periodOfAward
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Project Period
+                  children:
+                    - name: '@searchStartFiscalYear'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Research Start Year for search purposes\r\nCreate from Start Date, Start Year"
+                    - name: '@searchEndFiscalYear'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Research End Year for search purposes\r\nCreate from End Date, End Year"
+                    - name: startDate
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: Start Date (YYYY-MM-DD)
+                    - name: endDate
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: End Date (YYYY-MM-DD)
+                      children:
+                        - name: '@estimated'
+                          isAttribute: true
+                          min: '0'
+                          max: '1'
+                          description: "Predetermined Flag\r\n  = false: Fixed\r\n  = true: Estimated"
+                        - name: '@nondisclosure'
+                          isAttribute: true
+                          min: '0'
+                          max: '1'
+                          description: "Unpublicised Flag\r\n = true: Unpublicised"
+                    - name: startFiscalYear
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: Start Year (YYYY)
+                    - name: endFiscalYear
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: End Year (YYYY)
+                      children:
+                        - name: '@estimated'
+                          isAttribute: true
+                          min: '0'
+                          max: '1'
+                          description: "Predetermined Flag\r\n  = false: Fixed\r\n  = true: Estimated"
+                        - name: '@nondisclosure'
+                          isAttribute: true
+                          min: '0'
+                          max: '1'
+                          description: "Unpublicised Flag\r\n = true: Unpublicised"
+                - name: category
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: "System/Project or Category Type Title\r\nRepeat the System/Project element (as many times as needed)"
+                  children:
+                    - name: '@path'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: >-
+                        Assign value by listing code values of each
+                        System/Project in a hierarchical order
+                    - name: '@niiCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "System/Project Title Code\r\nAssign code value in order to display the level -> Uniquely assigned code without indicating the hierarchy"
+                    - name: '@mextCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: MEXT Code
+                    - name: '@jspsCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: JSPS Code
+                    - name: '@eradCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: eRad Code
+                - name: section
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Section Title
+                  children:
+                    - name: '@niiCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: Section Code (NII Code)
+                    - name: '@mextCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: MEXT Code
+                    - name: '@jspsCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: JSPS Code
+                    - name: '@eradCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: eRad Code
+                - name: field
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Research Field Title
+                  children:
+                    - name: '@sequence'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: "Appearance Priority　(>=1)\r\nDetermine the correspondence of Japanese and English data by the correspondence of ‘sequence’"
+                    - name: '@path'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: >-
+                        Assign value by listing code values of each Research
+                        Field in a hierarchical order
+                    - name: '@fieldTable'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Research Field Type\r\n  = saimoku: Research Fields\r\n  = jigentsuki_saimoku: Research Fields with a Time Limit\r\n  = tokusetsu_bunya: Focused Research Fields\r\n  = senmon_bunya: Specialized Research Fields\r\n  = tokubetsu_kenkyu: Research Fields for Research Fellow\r\n  = zantei_bunya: The Area of Research for the Screening"
+                    - name: '@niiCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: Research Field Code (NII Code)
+                    - name: '@mextCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: MEXT Code
+                    - name: '@jspsCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: JSPS Code
+                    - name: '@eradCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: eRad Code
+                - name: review_section
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Section Table (Title)
+                  children:
+                    - name: '@sequence'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: "Appearance Priority (>=1)\r\nDetermine the correspondence of Japanese and English data by the correspondence of ‘sequence’"
+                    - name: '@niiCode'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: Section Code (NII Code)
+                    - name: '@tableType'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: Section Table Type
+                - name: institution
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Institution
+                  children:
+                    - name: '@type'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Research Institution Type\r\n  = academic: Academic Institution\r\n  = industry: Private Company"
+                    - name: '@sequence'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: ''
+                    - name: '@niiCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: Research Institution Code (NII Code)
+                    - name: '@mextCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: MEXT Code
+                    - name: '@jspsCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: JSPS Code
+                    - name: '@jglobalCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: J-GLOBAL Institution Code
+                    - name: '@eradCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: eRad Code
+                    - name: '@rmapCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: Researchmap Code
+                - name: allocation
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Allocation Type
+                  children:
+                    - name: '@sequence'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: Appearance Priority (>=1)
+                    - name: '@niiCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: Allocation Type Code (NII Code)
+                    - name: '@mextCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: MEXT Code
+                - name: agency
+                  isAttribute: false
+                  min: '1'
+                  max: '1'
+                  description: Funding Agency Name
+                  children:
+                    - name: '@niiCode'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Funding Agency ID\r\n = kakenhi : Grant-in-Aid for Scientific Research (Kakenhi)"
+                - name: projectStatus
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Project Status
+                  children:
+                    - name: '@statusCode'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: "Research Project’s Status\r\n = adopted: Adopted\r\n = granted: Granted\r\n = ceased: Ceased\r\n = suspended: Suspended\r\n = project_closed: Completed\r\n = declined: Declined\r\n = discontinued: Discontinued"
+                    - name: '@date'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: Date (YYYY-MM-DD)
+                    - name: note
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: Reasons for changing the status
+                - name: overallAwardAmount
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Award Amount (Total)
+                  children:
+                    - name: '@planned'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Award Amount Flag\r\n  = false: Award Amount (default)\r\n  = true: Planned Amount"
+                    - name: directCost
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: Overall Direct Cost (Project’s Total Cost)
+                    - name: indirectCost
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: Overall Indirect Cost (Project’s Total Cost)
+                    - name: totalCost
+                      isAttribute: false
+                      min: '1'
+                      max: '1'
+                      description: Total Cost (Project’s Total Cost)
+                    - name: convertedJpyTotalCost
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: Converted Total Cost in Japanese yen
+                    - name: unit
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: A currency unit.
+                      children:
+                        - name: originalValue
+                          isAttribute: false
+                          min: '1'
+                          max: '1'
+                          description: For display purpose
+                        - name: normalizedValue
+                          isAttribute: false
+                          min: '0'
+                          max: '1'
+                          description: Normalised Value
+                - name: created
+                  isAttribute: false
+                  min: '1'
+                  max: '1'
+                  description: >-
+                    Initial Data Creation Date (YYYY-MM-DDTHH:MI:SSZ), ISO8601
+                    format, GMT, with Z at the end
+                - name: modified
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: >-
+                    Data Modification Date (YYYY-MM-DDTHH:MI:SSZ), ISO8601
+                    format, GMT, with Z at the end
+        - name: reportList
+          isAttribute: false
+          min: '0'
+          max: '1'
+          description: Report/Assessment List
+          children:
+            - name: report
+              isAttribute: false
+              min: '1'
+              max: u
+              description: Report
+              children:
+                - name: '@id'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: >-
+                    Unique ID for each data; however, assign the same ID for the
+                    same data in Japanese and English.
+                - name: '@parentId'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: >-
+                    Parent Research Project to be linked: deprecated.
+                    Transferred to ‘parent’ element.
+                - name: '@type'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: "Project Details Record Types (codes)\r\n = jiseki_hokoku: Annual Research Report\r\n = jiko_hyoka_hokoku: Self-evaluation Report\r\n = kenkyu_shinchoku_hyoka: Research Progress Assessment\r\n = kenkyu_seika_hokoku_gaiyo: Final Research Report Summary\r\n = chukan_hyoka_hokoku: Interim Assessment Report\r\n = jigo_hyo ka_hokoku: Ex-post Assessment Report\r\n = jishi_jokyo_hokoku: Research-status Report\r\n = kenkyu_seika_hokoku: Final Research Report\r\n = saitaku_shoken: Comments on the Screening Results\r\n = saitaku_gaiyo: Abstract\r\n = kenkyu_shinchoku_hyoka_gaiyo: Abstract(Research Progress Assessment)\r\n = kenkyu_shinchoku_hyoka_genchi_chosa: Research Progress Assessment (Comments on the Site Visits)\r\n = kenkyu_shinchoku_hyoka_keka: Research Progress Assessment (Result)\r\n = kenkyu_shinchoku_hyoka_kensho: Research Progress Assessment (Verification Result)\r\n = tsuiseki_hyoka_shoken: Comments (Follow-up Assessment)\r\n = tsuiseki_hyoka_jiko_hyoka: Self-evaluation (Follow-up Assessment)\r\n = tsuiseki_hyoka_kenkyu_gaiyo: Abstract(Follow-up Assessment)\r\n = chukan_hyoka_shoken: Interim Assessment (Comments)\r\n = jigo_hyoka_shoken: Ex-post Assessment (Comments)\r\n = jiseki_hokoku_2: Annual Research Report(2)\r\n = db_kokai_henko_hokoku: Database Status Report\r\n = shinbun_keisai_hokoku: Press Release Report\r\n = kenkyu_seika_hapyo_hokoku: Products Report"
+                - name: '@xml:lang'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Assessment Language\r\n  = ja : Japanese \r\n  = en : English"
+                - name: '@fiscalYear'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: Applicable Fiscal Year
+                - name: '@sequence'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: "Appearance Priority (>=1)\r\nLarger the value the latest"
+                - name: '@date'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: Assessment Date(YYYY-MM-DD)
+                - name: parent
+                  isAttribute: false
+                  min: '1'
+                  max: u
+                  description: Parent element of the applicable report
+                  children:
+                    - name: '@id'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: Parent element’s ID
+                - name: language
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: "ISO 639-2, Body Text Language\r\n jpn: Japanese \r\n eng: English"
+                - name: title
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Research Project Title
+                - name: titleAbbreviated
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Research Project Title (Abbreviation)
+                - name: doi
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: DOI
+                - name: projectStatus
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Project Status
+                  children:
+                    - name: '@statusCode'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: "Research Project Status\r\n = adopted: Adopted\r\n = granted: Granted\r\n = ceased: Ceased\r\n = suspended: Suspended\r\n = project_closed: Completed\r\n = declined: Declined\r\n = discontinued: Discontinued"
+                    - name: '@date'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: Date (YYYY-MM-DD)
+                    - name: note
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: Reasons for changing the status
+                - name: created
+                  isAttribute: false
+                  min: '1'
+                  max: '1'
+                  description: >-
+                    Data Creation Date (YYYY-MM-DDTHH:MI:SSZ), ISO8601 format,
+                    GMT, with Z at the end
+                - name: modified
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: >-
+                    Data Modification Date (YYYY-MM-DDTHH:MI:SSZ), ISO8601
+                    format, GMT, with Z at the end
+        - name: productList
+          isAttribute: false
+          min: '0'
+          max: '1'
+          description: Research Output List
+          children:
+            - name: product
+              isAttribute: false
+              min: '1'
+              max: u
+              description: Research Output
+              children:
+                - name: '@id'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Research Output Data’s Unique ID
+                - name: '@productId'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: >-
+                    ID specified by the data creator in order to trace the
+                    Research Output
+                - name: '@type'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: "Research Output Type\r\n  = journal_article: Journal Article\r\n  = presentation: Presentation\r\n  = symposium: Funded Workshop\r\n  = book: Book\r\n  = press: Press Release\r\n  = award: Award\r\n  = other: Other\r\n  = note: Notes\r\n  = patent: Patent (Industrial Property Right)\r\n  = publication: Publications\r\n  = database: Database\r\n  = jointInternational: International Joint Research"
+                - name: '@sequence'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Appearance Priority (>=1)
+                - name: '@reviewed'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Peer Reviewed or Not\r\n  = false: Not Peer Reviewed\r\n  = true: Peer Reviewed"
+                - name: '@invited'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Invited Lecture or Not\r\n  = false: Not Invited Lecture\r\n  = true: Invited Lecture"
+                - name: '@foreign'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Overseas or not\r\n  = false: Japan\r\n  = true: Overseas"
+                - name: '@openAccess'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Open Access or Not\r\n  = false: Not Open Access (default)\r\n  = true: Open Access"
+                - name: '@acknowledgement'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "With or Without Acknowledgement\r\n  = false: Without Acknowledgement (default)\r\n  = true: With Acknowledgement"
+                - name: '@jointInternational'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "International Co-authorship/Conference or Not\r\n  = false: Not International Co-authorship/Conference (default)\r\n  = true: International Co-authorship/Conference"
+                - name: language
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: "Main Language (Specify in ISO 639-2 code)\r\n  = jpn: Japanese\r\n  = eng: English"
+                - name: parent
+                  isAttribute: false
+                  min: '1'
+                  max: u
+                  description: Specify the Parent
+                  children:
+                    - name: '@id'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: Parent ID
+                - name: doi
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: DOI
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: For display purpose
+                    - name: '@authenticated'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Authenticated or not\r\n = false: Not authenticated\r\n = true: Authenticated"
+                - name: pmid
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: PubMed ID
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: For display purpose
+                    - name: '@authenticated'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Authenticated or not\r\n = false: Not authenticated\r\n = true: Authenticated"
+                - name: pmcid
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: PubMedC ID
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: For display purpose
+                    - name: '@authenticated'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Authenticated or not\r\n = false: Not authenticated\r\n = true: Authenticated"
+                - name: issn
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: ISSN
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: For display purpose
+                    - name: '@authenticated'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Authenticated or not\r\n = false: Not authenticated\r\n = true: Authenticated"
+                - name: jglobal
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: J-GLOBAL ID
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: For display purpose
+                    - name: '@authenticated'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Authenticated or not\r\n = false: Not authenticated\r\n = true: Authenticated"
+                - name: isbn
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: ISBN
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: ISBN for display purpose
+                    - name: '@authenticated'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Authenticated or not\r\n = false: Not authenticated\r\n = true: Authenticated"
+                - name: naid
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: CiNii Books or Articles ID
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: CiNii Books or Articles ID for display purpose
+                    - name: '@authenticated'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Authenticated or not\r\n = false: Not authenticated\r\n = true: Authenticated"
+                - name: patentApplicationType
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Patent (Industrial Property Right), Patent Type
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: For display purpose
+                    - name: '@authenticated'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Authenticated or not\r\n = false: Not authenticated\r\n = true: Authenticated"
+                - name: patentApplicationNumber
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Patent (Industrial Property Right), Application Number
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: For display purpose
+                    - name: '@authenticated'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Authenticated or not\r\n = false: Not authenticated\r\n = true: Authenticated"
+                - name: patentPublicationNumber
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Patent (Industrial Property Right), Publication Number
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: For display purpose
+                    - name: '@authenticated'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Authenticated or not\r\n = false: Not authenticated\r\n = true: Authenticated"
+                - name: url
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: URL
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: A tag for display purpose
+                    - name: '@authenticated'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Authenticated or not\r\n = false: Not authenticated\r\n = true: Authenticated"
+                - name: ut
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: WoS ID
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: For display purpose
+                    - name: '@authenticated'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Authenticated or not\r\n = false: Not authenticated\r\n = true: Authenticated"
+                - name: eid
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Scopus ID
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: For display purpose
+                    - name: '@authenticated'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Authenticated or not\r\n = false: Not authenticated\r\n = true: Authenticated"
+                - name: author
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Author’s/Presenter’s Name
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: title
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Title/Article Title/Presentation Title
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: journalTitle
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Journal Title
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: organizer
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Conference Organiser’s Name
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: publisher
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Publisher
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: volume
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Volume
+                - name: issue
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Issue
+                - name: pages
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: "Page. Connect the normalised values with a hyphen (e.g. ‘FROM-TO’).\r\nPage. Connect the normalised values with a hyphen (e.g. ‘FROM-TO’). \r\nIf it does not have FROM, describe ‘-To’.\r\nIf it does not have TO, describe ‘FROM-’.\r\nIf it does not have either of them, the text is omitted."
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: Page for display purpose
+                - name: totalPages
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Total Number of Pages
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: Total Number of Pages for display purpose
+                - name: year
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Publication Year (Normalise to 4 digits)
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: Date for display purpose
+                - name: date
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: >-
+                    Date (YYYY-MM-DD). If it is a range, normalise it to
+                    (YYYY-MM-DD/YYYY-MM-DD).
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: Date for display purpose
+                - name: place
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Place of Presentation
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: description
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Description
+                - name: patentInventor
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Patent (Industrial Property Right), Inventor
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: patentAssignee
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Patent (Industrial Property Right), Right Holder/Applicant
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: patentApplicationDate
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: >-
+                    Patent (Industrial Property Right), Application Date
+                    (YYYY-MM-DD)
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: For display purpose
+                - name: patentApplicationYear
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Patent (Industrial Property Right), Application Year (YYYY)
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: For display purpose
+                - name: patentIssueDate
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Patent (Industrial Property Right), Issue Date (YYYY-MM-DD)
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: For display purpose
+                - name: patentIssueYear
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Patent (Industrial Property Right), Issue Year (YYYY)
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: For display purpose
+                - name: patentPublicationDate
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: >-
+                    Patent (Industrial Property Right), Publication Date
+                    (YYYY-MM-DD)
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: For display purpose
+                - name: patentPublicationYear
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Patent (Industrial Property Right), Publication Year (YYYY)
+                  children:
+                    - name: '@originalValue'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: For display purpose
+                - name: country
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Country Name
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: otherCountry
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Number of Other Countries
+                - name: counterpartInstitution
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Overseas Institution Name
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: otherInstitution
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Number of Other Institutions
+                - name: coinvestigatorOverseas
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Main Overseas Co-investigator’s Name
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: department
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Department
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: jobTitle
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Job Title
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: changeDate
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Approval Date for changing Overseas Institution
+                - name: plainText
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Plain Text
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+        - name: productListEnriched
+          isAttribute: false
+          min: '0'
+          max: '1'
+          description: >-
+            Research Output, whose information is supplemented by other source
+            and aggregated and integrated within the project
+          children:
+            - name: product
+              isAttribute: false
+              min: '1'
+              max: u
+              description: Research Output, whose information is supplemented
+              children:
+                - name: '@id'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Research Output ID, whose information is supplemented
+                - name: '@type'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: "Research Output Type\r\n  = journal_article: Journal Article\r\n  = presentation: Presentation\r\n  = symposium: Funded Workshop\r\n  = book: Book\r\n  = press: Press Release\r\n  = award: Award\r\n  = other: Other\r\n  = note: Notes\r\n  = patent: Patent (Industrial Property Right)\r\n  = publication: Publications\r\n  = database: Database\r\n  = jointInternational: International Joint Research"
+                - name: '@sequence'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Appearance Priority (>=1)
+                - name: '@reviewed'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Peer Reviewed or Not\r\n  = false: Not Peer Reviewed\r\n  = true: Peer Reviewed"
+                - name: '@invited'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Invited Lecture or Not\r\n  = false: Not Invited Lecture\r\n  = true: Invited Lecture"
+                - name: '@foreign'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Overseas or not\r\n  = false: Japan\r\n  = true: Overseas"
+                - name: '@openAccess'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Open Access or Not\r\n  = false: Not Open Access (default)\r\n  = true: Open Access"
+                - name: '@acknowledgement'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "With or Without Acknowledgement\r\n  = false: Without Acknowledgement (default)\r\n  = true: With Acknowledgement"
+                - name: '@jointInternational'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "International Co-authorship/Conference or Not\r\n  = false: Not International Co-authorship/Conference (default)\r\n  = true: International Co-authorship/Conference"
+                - name: ref
+                  isAttribute: false
+                  min: '1'
+                  max: u
+                  description: >-
+                    Refer to Research Output, from which the information was
+                    integrated
+                  children:
+                    - name: '@id'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: Corresponding Research Output’s //productList/product@id
+                    - name: '@productId'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: >-
+                        Corresponding Research Output’s
+                        //productList/product@productId
+                - name: language
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: "Research Output’s Main Language (Specify in ISO 639-2 code)\r\n  = jpn: Japanese \r\n  = eng: English"
+                - name: parent
+                  isAttribute: false
+                  min: '1'
+                  max: u
+                  description: "Parent element of Research Output, on which the aggregated result is based.\r\nInclude all without duplicating at ‘@id’ level"
+                  children:
+                    - name: '@id'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: Corresponding element’s @id
+                - name: doi
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: DOI
+                - name: pmid
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: PubMed ID
+                - name: pmcid
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: PubMedC ID
+                - name: issn
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: ISSN
+                - name: jglobal
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: J-GLOBAL ID
+                - name: isbn
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: ISBN
+                - name: naid
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: CiNii Books or Articles ID
+                - name: patentApplicationType
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Patent (Industrial Property Right), Patent Type
+                - name: patentApplicationNumber
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Patent (Industrial Property Right), Application Number
+                - name: patentPublicationNumber
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Patent (Industrial Property Right), Publication Number
+                - name: url
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: URL
+                - name: author
+                  isAttribute: false
+                  min: '0'
+                  max: '2'
+                  description: Author’s/Presenter’s Name
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: title
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Title/Article Title/Presentation Title
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: journalTitle
+                  isAttribute: false
+                  min: '0'
+                  max: '2'
+                  description: Journal Title
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: organizer
+                  isAttribute: false
+                  min: '0'
+                  max: '2'
+                  description: Conference Organiser’s Name
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: publisher
+                  isAttribute: false
+                  min: '0'
+                  max: '2'
+                  description: Publisher
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: volume
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Volume
+                - name: issue
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Issue
+                - name: pages
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: "Page. Connect the normalised values with a hyphen (e.g. ‘FROM-TO’). \r\nIf it does not have FROM, describe ‘-To’.\r\nIf it does not have TO, describe ‘FROM-’.\r\nIf it does not have either of them, the text is omitted."
+                - name: totalPages
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Total Number of Pages
+                - name: year
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Publication Year (Normalise to 4 digits)
+                - name: date
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: >-
+                    Date (YYYY-MM-DD). If it is a range, normalise it to
+                    (YYYY-MM-DD/YYYY-MM-DD).
+                - name: place
+                  isAttribute: false
+                  min: '0'
+                  max: '2'
+                  description: Place of Presentation
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: description
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Description
+                - name: patentInventor
+                  isAttribute: false
+                  min: '0'
+                  max: '2'
+                  description: Patent (Industrial Property Right), Inventor
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: patentAssignee
+                  isAttribute: false
+                  min: '0'
+                  max: '2'
+                  description: Patent (Industrial Property Right), Right Holder/Applicant
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: patentApplicationDate
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: >-
+                    Patent (Industrial Property Right), Application Date
+                    (YYYY-MM-DD)
+                - name: patentApplicationYear
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Patent (Industrial Property Right), Application Year (YYYY)
+                - name: patentIssueDate
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Patent (Industrial Property Right), Issue Date (YYYY-MM-DD)
+                - name: patentIssueYear
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Patent (Industrial Property Right), Issue Year (YYYY)
+                - name: patentPublicationDate
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: >-
+                    Patent (Industrial Property Right), Publication Date
+                    (YYYY-MM-DD)
+                - name: patentPublicationYear
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Patent (Industrial Property Right), Publication Year (YYYY)
+                - name: country
+                  isAttribute: false
+                  min: '0'
+                  max: '2'
+                  description: Country Name
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: otherCountry
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Number of Other Countries
+                - name: counterpartInstitution
+                  isAttribute: false
+                  min: '0'
+                  max: '2'
+                  description: Overseas Institution Name
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: otherInstitution
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Number of Other Institutions
+                - name: coinvestigatorOverseas
+                  isAttribute: false
+                  min: '0'
+                  max: '2'
+                  description: Main Overseas Co-investigator’s Name
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: department
+                  isAttribute: false
+                  min: '0'
+                  max: '2'
+                  description: Department
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: jobTitle
+                  isAttribute: false
+                  min: '0'
+                  max: '2'
+                  description: Job Title
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: changeDate
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Approval Date for changing Overseas Institution
+                - name: plainText
+                  isAttribute: false
+                  min: '0'
+                  max: '2'
+                  description: Plain Text
+                  children:
+                    - name: '@xml:lang'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+        - name: memberList
+          isAttribute: false
+          min: '0'
+          max: '1'
+          description: Researcher List
+          children:
+            - name: member
+              isAttribute: false
+              min: '1'
+              max: u
+              description: Treat each Researcher as a unique entry and repeat ‘member’ tag
+              children:
+                - name: '@id'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: >-
+                    Unique ID assigned to each Researcher’s data: however,
+                    assign the same ID to the same data in Japanese and English
+                - name: '@sequence'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Appearance Priority (>=1)
+                - name: '@xml:lang'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: '@role'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: "Researcher Role\r\n  = principal_investigator: Principal Investigator\r\n  = corporate_responsibility: Corporate Representative\r\n  = research_responsibility: Research Representative\r\n  = area_organizer: Area Organiser\r\n  = co_investigator_buntan: Co-Investigator\r\n  = co_investigator_renkei: Research Partners\r\n  = research_collaborator: Research Collaborator\r\n  = research_fellow: Research Fellow\r\n  = foreign_research_fellow: Foreign Research Fellow\r\n  = host_researcher: Host Researcher\r\n  = production_group: Production Organisation\r\n  = host_organization: Host Organisation\r\n  = industry_academia_coordinator: Industry-Academia Coordinator\r\n  = program_manager: Program Manager\r\n  = research_supervisor: Research Supervisor\r\n  = deputy_supervisor: Deputy Supervisor\r\n  = assistant_supervisor: Assistant Supervisor\r\n  = research_area_advisor: Research Area Advisor\r\n  = research_area_management_advisor: Research Area Management Advisor\r\n  = international_advisor: International Advisor\r\n  = international_advisory_board_member: International Advisory Board Member\r\n  = evaluation_committee_member: Evaluation Committee Member\r\n  = research_areas_council_member: Research Areas Evaluation Committee Member\r\n  = research_areas_experts: Research Areas Evaluation Committee Member\r\n  = research_area_evaluation_committee_member: Research Areas Evaluation Committee Member\r\n  = follow_up_evaluation_committee_member: Follow-up Evaluation Committee Member\r\n  = unknown: Unknown"
+                - name: '@fiscalYear'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: Fiscal Year
+                - name: '@researcherNumber'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: Unified Researcher Number
+                - name: '@eradCode'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: eRad Researcher Number
+                - name: '@rmapCode'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: ResearchMap Researcher Number
+                - name: '@jglobalCode'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: J-GLOBAL Researcher Number
+                - name: '@orcid'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: ORCID Researcher Number
+                - name: parent
+                  isAttribute: false
+                  min: '1'
+                  max: u
+                  description: Specify the Parent
+                  children:
+                    - name: '@id'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: Parent ID
+                - name: personalName
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Researcher Name
+                  children:
+                    - name: '@sequence'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: Appearance Priority (>=1)
+                    - name: fullName
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: >-
+                        Full Name (Insert a en space between Family Name and
+                        Given Name)
+                    - name: familyName
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: Family Name
+                      children:
+                        - name: '@yomi'
+                          isAttribute: true
+                          min: '0'
+                          max: '1'
+                          description: Family Name (yomi)
+                    - name: givenName
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: Given Name
+                      children:
+                        - name: '@yomi'
+                          isAttribute: true
+                          min: '0'
+                          max: '1'
+                          description: Given Name (yomi)
+                - name: attribute
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Researcher Attribute
+                  children:
+                    - name: affiliation
+                      isAttribute: false
+                      min: '0'
+                      max: u
+                      description: Institution/Department/Job Title
+                      children:
+                        - name: '@sequence'
+                          isAttribute: true
+                          min: '1'
+                          max: '1'
+                          description: Appearance Priority (>=1)
+                        - name: institution
+                          isAttribute: false
+                          min: '0'
+                          max: '1'
+                          description: Affiliation
+                          children:
+                            - name: '@institutionType'
+                              isAttribute: true
+                              min: '0'
+                              max: '1'
+                              description: "Research Institution Type\r\n  = academic: Academic Institution\r\n  = industry: Private Company"
+                            - name: '@institutionCode'
+                              isAttribute: true
+                              min: '0'
+                              max: '1'
+                              description: Research Institution Code (NII Code)
+                            - name: '@mextCode'
+                              isAttribute: true
+                              min: '0'
+                              max: '1'
+                              description: MEXT Code
+                            - name: '@jspsCode'
+                              isAttribute: true
+                              min: '0'
+                              max: '1'
+                              description: JSPS Code
+                            - name: '@eradCode'
+                              isAttribute: true
+                              min: '0'
+                              max: '1'
+                              description: eRad Code
+                        - name: department
+                          isAttribute: false
+                          min: '0'
+                          max: '1'
+                          description: Department
+                          children:
+                            - name: '@mextCode'
+                              isAttribute: true
+                              min: '0'
+                              max: '1'
+                              description: MEXT Code
+                            - name: '@jspsCode'
+                              isAttribute: true
+                              min: '0'
+                              max: '1'
+                              description: JSPS Code
+                            - name: '@eradCode'
+                              isAttribute: true
+                              min: '0'
+                              max: '1'
+                              description: eRad Code
+                        - name: jobTitle
+                          isAttribute: false
+                          min: '0'
+                          max: '1'
+                          description: Job Title
+                          children:
+                            - name: '@mextCode'
+                              isAttribute: true
+                              min: '0'
+                              max: '1'
+                              description: MEXT Code
+                            - name: '@jspsCode'
+                              isAttribute: true
+                              min: '0'
+                              max: '1'
+                              description: JSPS Code
+                            - name: '@eradCode'
+                              isAttribute: true
+                              min: '0'
+                              max: '1'
+                              description: eRad Code
+                - name: memberStatus
+                  isAttribute: false
+                  min: '0'
+                  max: u
+                  description: Researcher’s Status Information
+                  children:
+                    - name: '@statusCode'
+                      isAttribute: true
+                      min: '1'
+                      max: '1'
+                      description: "Status Code\r\ndeclined: Declined"
+                    - name: '@date'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: Date (YYYY-MM-DD)
+                    - name: '@from'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: Start Date (YYYY-MM-DD)
+                    - name: '@to'
+                      isAttribute: true
+                      min: '0'
+                      max: '1'
+                      description: End Date (YYYY-MM-DD)
+                    - name: note
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: Notes
+        - name: awardNumberList
+          isAttribute: false
+          min: '0'
+          max: u
+          description: List of Project Number
+          children:
+            - name: '@id'
+              isAttribute: true
+              min: '0'
+              max: '1'
+              description: Element ID of Project Number
+            - name: '@parentId'
+              isAttribute: true
+              min: '1'
+              max: '1'
+              description: Parent ID
+            - name: awardNumber
+              isAttribute: false
+              min: '1'
+              max: '1'
+              description: Value of Project Number
+        - name: keywordList
+          isAttribute: false
+          min: '0'
+          max: u
+          description: Keywords List
+          children:
+            - name: '@xml:lang'
+              isAttribute: true
+              min: '0'
+              max: '1'
+              description: "Language\r\n  = ja: Japanese  (default)\r\n  = en: English"
+            - name: '@parentId'
+              isAttribute: true
+              min: '1'
+              max: '1'
+              description: Parent ID
+            - name: keyword
+              isAttribute: false
+              min: '1'
+              max: u
+              description: Keywords
+              children:
+                - name: '@sequence'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Appearance Priority (>=1)
+        - name: paragraphList
+          isAttribute: false
+          min: '0'
+          max: u
+          description: Paragraph List
+          children:
+            - name: '@type'
+              isAttribute: true
+              min: '1'
+              max: '1'
+              description: "Paragraph Type\r\n  = abstract: Research Outline\r\n  = progress: Progress to date\r\n  = planning_scheme: Future Research Plan\r\n  = planning_budget_expenditure: Research Budget Plan (Next FY)\r\n  = purpose: Research Purpose\r\n  = implementation_schedule: Research Plan (Current FY)\r\n  = remark: Remark\r\n  = common_remark: Common Remark\r\n  = assessment: Assessment\r\n  = assessment_result: Assessment Results\r\n  = inspection: Verification Results\r\n  = conclusion: Conclusion\r\n  = note: Notes\r\n  = outline_of_research_performance: Outline of  Research Performance\r\n  = outline_of_research_achievement: Outline of Research Output\r\n  = reason_of_carry_over: Reasons for Carry-over Expenditure \r\n  = plan_of_carry_over: Carry-over Expenditure Plan (Next FY)\r\n  = free_research_field: Free Description\r\n  = custom: Specify depending on Caption\r\n  = significance_of_research_achievement: Academic Significance and Societal Importance of the Research Achievements\r\n  = outline_of_research_initial: Outline of Research at the Start"
+            - name: '@xml:lang'
+              isAttribute: true
+              min: '0'
+              max: '1'
+              description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+            - name: '@parentId'
+              isAttribute: true
+              min: '1'
+              max: '1'
+              description: Specify the Parent
+            - name: '@sequence'
+              isAttribute: true
+              min: '1'
+              max: '1'
+              description: Appearance Priority (>=1)
+            - name: caption
+              isAttribute: false
+              min: '0'
+              max: '2'
+              description: Caption
+              children:
+                - name: '@xml:lang'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+            - name: paragraph
+              isAttribute: false
+              min: '1'
+              max: u
+              description: Paragraph
+              children:
+                - name: '@sequence'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Appearance Priority (>=1)
+        - name: classificationList
+          isAttribute: false
+          min: '0'
+          max: '1'
+          description: Classification List
+          children:
+            - name: classification
+              isAttribute: false
+              min: '1'
+              max: u
+              description: Classification
+              children:
+                - name: '@id'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Unique ID for each data
+                - name: '@parentId'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Specify the Parent
+                - name: '@type'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: "Classification Type\r\n  = progress: Progress to date\r\n  = remark_chukan: Comments (Interim Assessment)\r\n  = remark_jigo: Comments (Ex-post Assessment)\r\n  = assessment: Assessment Results\r\n  = inspection: Verification Results"
+        - name: awardAmountList
+          isAttribute: false
+          min: '0'
+          max: u
+          description: Award Amount List
+          children:
+            - name: '@sequence'
+              isAttribute: true
+              min: '1'
+              max: '1'
+              description: "Display Order. Re-arranged the user-defined order by ascending order. \r\nPositive integer of 1 and over."
+            - name: '@parentId'
+              isAttribute: true
+              min: '1'
+              max: '1'
+              description: Parent ID of this element
+            - name: '@userDefinedId'
+              isAttribute: true
+              min: '0'
+              max: '1'
+              description: "User-defined ID\r\nID attribute in common import XML"
+            - name: caption
+              isAttribute: false
+              min: '0'
+              max: u
+              description: Title of this Award Amount List
+              children:
+                - name: '@xml:lang'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Language in which ‘Title of Award Amount List’ is written.\r\nIf the language is unknown, omit this attribute."
+            - name: awardAmount
+              isAttribute: false
+              min: １
+              max: u
+              description: >-
+                Data with ‘awardAmountList/awardAmount/@overall=false’ in common
+                import XML for Award Amount(Planned)
+              children:
+                - name: '@sequence'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: "Appearance Priority (>=1)\r\nUnique value within awardAmountList/awardAmount"
+                - name: '@fiscalYear'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: Fiscal Year(YYYY)
+                - name: '@planned'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Award Amount Flag\r\n  = false : Allocated Amount\r\n  = true : Planned Amount"
+                - name: directCost
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Direct Cost (yen)
+                - name: indirectCost
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Indirect Cost (yen)
+                - name: totalCost
+                  isAttribute: false
+                  min: '1'
+                  max: '1'
+                  description: Total Amount(yen)
+                - name: convertedJpyTotalCost
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: Converted Total Cost in Japanese yen
+                - name: unit
+                  isAttribute: false
+                  min: '0'
+                  max: '1'
+                  description: A currency unit.
+                  children:
+                    - name: originalValue
+                      isAttribute: false
+                      min: '1'
+                      max: '1'
+                      description: For display purpose
+                    - name: normalizedValue
+                      isAttribute: false
+                      min: '0'
+                      max: '1'
+                      description: Normalised Value
+        - name: fileList
+          isAttribute: false
+          min: '0'
+          max: u
+          description: Attached File List
+          children:
+            - name: '@parentId'
+              isAttribute: true
+              min: '1'
+              max: '1'
+              description: Parent ID
+            - name: file
+              isAttribute: false
+              min: '1'
+              max: u
+              description: Attached File
+              children:
+                - name: '@sequence'
+                  isAttribute: true
+                  min: '1'
+                  max: '1'
+                  description: Appearance Priority (>=1)
+                - name: '@xml:lang'
+                  isAttribute: true
+                  min: '0'
+                  max: '1'
+                  description: "Language\r\n  = ja: Japanese \r\n  = en: English"
+                - name: name
+                  isAttribute: false
+                  min: '1'
+                  max: '1'
+                  description: File Name
+                - name: path
+                  isAttribute: false
+                  min: '1'
+                  max: '1'
+                  description: File’s URL
+    - name: totalResults
+      isAttribute: false
+      min: '0'
+      max: '1'
+      description: >-
+        Total Number of Search Results by specified search criteria when xml is
+        acquired via API
+    - name: startIndex
+      isAttribute: false
+      min: '0'
+      max: '1'
+      description: >-
+        Specified Starting Number of acquired search results when xml is
+        acquired via API
+    - name: itemsPerPage
+      isAttribute: false
+      min: '0'
+      max: '1'
+      description: >-
+        Specified Number of Acquired Items of search results when xml is
+        acquired via API
+

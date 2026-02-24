@@ -45,8 +45,8 @@ try {
     keyword: '研究データ管理',
     language: 'ja',
     institution: '大阪大学',
-    grantPeriodFrom: 2024,
-    grantPeriodTo: 2027,
+    // grantPeriodFrom: 2024,
+    // grantPeriodTo: 2027,
     resultsPerPage: 5,
   });
 
