@@ -53,10 +53,10 @@ describe('ResearchersAPI', () => {
       const result = await api.search({ keyword: '田中' });
 
       const researcher = result.researchers[0];
-      expect(researcher.affiliations).toBeDefined();
-      expect(researcher.affiliations!).toHaveLength(1);
+      expect(researcher.currentAffiliations).toBeDefined();
+      expect(researcher.currentAffiliations!).toHaveLength(1);
 
-      const affiliation = researcher.affiliations![0];
+      const affiliation = researcher.currentAffiliations![0];
       expect(affiliation.institution).toBeDefined();
       expect(affiliation.institution!.name).toBe('東京大学');
       expect(affiliation.institution!.code).toBe('32616');

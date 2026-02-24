@@ -36,6 +36,7 @@ export interface JobTitle {
 
 /** Affiliation combining institution, department, and job title with tenure dates. */
 export interface Affiliation {
+  sequence?: number;
   institution?: Institution;
   department?: Department;
   jobTitle?: JobTitle;
@@ -133,8 +134,8 @@ export interface ResearcherRole {
 export interface Researcher {
   id?: string;
   name?: PersonName;
-  affiliations?: Affiliation[];
-  researcherNumber?: string;
+  currentAffiliations?: Affiliation[];
+  historicalAffiliations?: Affiliation[];
   eradResearcherNumber?: string;
   jglobalId?: string;
   researchmapId?: string;

@@ -189,7 +189,7 @@ export class ResearchersAPI {
   private parseResearcher(data: ResearcherData): Researcher {
     const researcher: Researcher = {
       ...(typeof data.accn === 'string' && { id: data.accn }),
-      affiliations: [],
+      currentAffiliations: [],
       rawData: data,
     };
 
@@ -205,7 +205,7 @@ export class ResearchersAPI {
       for (const item of currentAffiliations) {
         const affiliation = this.parseAffiliation(item as ResearcherData);
         if (affiliation) {
-          researcher.affiliations!.push(affiliation);
+          researcher.currentAffiliations!.push(affiliation);
         }
       }
     }

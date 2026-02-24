@@ -33,7 +33,7 @@ try {
 
   for (const researcher of result.researchers) {
     const name = researcher.name?.fullName ?? '(no name)';
-    const affiliation = researcher.affiliations?.[0];
+    const affiliation = researcher.currentAffiliations?.[0];
     const institution = affiliation?.institution?.name ?? 'N/A';
     console.log(`  - ${name}  (${institution})`);
   }
@@ -74,13 +74,13 @@ try {
   for (const researcher of result.researchers) {
     const name = researcher.name?.fullName ?? '(no name)';
     const affiliations =
-      researcher.affiliations
+      researcher.currentAffiliations
         ?.map((a) => a.institution?.name)
         .filter(Boolean)
         .join(', ') ?? 'N/A';
 
     console.log(`  Name        : ${name}`);
-    console.log(`  KAKEN ID    : ${researcher.researcherNumber ?? 'N/A'}`);
+    console.log(`  eRad ID     : ${researcher.eradResearcherNumber ?? 'N/A'}`);
     console.log(`  Affiliations: ${affiliations}`);
 
     const latestProject = researcher.projects?.[0];
