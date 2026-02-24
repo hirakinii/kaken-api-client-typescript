@@ -13,13 +13,14 @@ TypeScript/Node.js client library for the [KAKEN](https://kaken.nii.ac.jp/) (科
 - **Project search** — search by keyword, institution, researcher name, grant number, and more
 - **Researcher search** — search by name, institution, researcher number, and keyword
 - **Automatic retries** — exponential backoff on transient network/server errors
-- **Disk-based response caching** — avoid redundant API calls
+- **Disk-based response caching** — avoid redundant API calls (Node.js only)
+- **Browser compatible** — works in Vite and other browser bundlers with `useCache: false`
 - **Fully typed** — rich TypeScript types and Zod-validated input schemas
 - **ESM-first** — native ES modules with `"type": "module"`
 
 ## Requirements
 
-- Node.js **≥ 20.0.0**
+- Node.js **≥ 20.0.0** (for disk caching; browser environments are supported with `useCache: false`)
 
 ## Installation
 
@@ -64,8 +65,21 @@ console.log(`Found ${researchers.totalResults} researchers`);
 | `appId` | `string` | `undefined` | KAKEN API application ID (register at [KAKEN](https://kaken.nii.ac.jp/)) |
 | `timeout` | `number` | `30000` | Request timeout in milliseconds |
 | `maxRetries` | `number` | `3` | Maximum retry attempts on transient failures |
-| `useCache` | `boolean` | `true` | Whether to cache responses on disk |
-| `cacheDir` | `string` | OS temp dir | Directory to store cache files |
+| `useCache` | `boolean` | `true` | Whether to cache responses on disk (Node.js only) |
+| `cacheDir` | `string` | OS temp dir | Directory to store cache files (Node.js only) |
+
+### Browser usage
+
+Browser environments are supported when `useCache` is set to `false`. Bundlers that respect the `"browser"` field in `package.json` (e.g. Vite, webpack, Rollup) will automatically use a no-op cache stub that avoids all Node.js-specific APIs.
+
+```typescript
+const client = new KakenApiClient({
+  appId: import.meta.env.VITE_KAKEN_APP_ID,
+  useCache: false, // required for browser environments
+});
+```
+
+> **Note:** `useCache: true` (the default) requires a Node.js file system and is not supported in browsers.
 
 ### Without caching
 
