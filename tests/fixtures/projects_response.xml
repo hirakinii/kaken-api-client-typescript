@@ -3,9 +3,56 @@
   <totalResults>1234</totalResults>
   <startIndex>1</startIndex>
   <itemsPerPage>20</itemsPerPage>
-  <grantAward id="KAKENHI-PROJECT-21K10000" awardNumber="21K10000" projectType="project">
-    <summary>
+  <grantAward id="KAKENHI-PROJECT-21K10000" awardNumber="21K10000" projectType="project" recordSet="kakenhi">
+    <identifier type="doi"><normalizedValue>10.1234/test</normalizedValue></identifier>
+    <identifier type="nationalAwardNumber"><normalizedValue>21K10000</normalizedValue></identifier>
+    <created>2021-04-01T00:00:00Z</created>
+    <modified>2023-03-31T00:00:00Z</modified>
+    <summary xml:lang="ja">
       <title>機械学習を用いた新しい研究手法の開発</title>
+      <titleAbbreviated>機械学習研究</titleAbbreviated>
+      <category path="1100/1101" niiCode="1101">情報学</category>
+      <field sequence="1" path="1/2" niiCode="123" fieldTable="saimoku">情報科学</field>
+      <institution niiCode="32616" type="academic" participate="2021-2023" sequence="1">東京大学</institution>
+      <allocation niiCode="0601" participate="2021-2023" sequence="1">若手研究</allocation>
+      <member sequence="1" participate="2021-2023" researcherNumber="12345678" eradCode="87654321" role="principal_investigator">
+        <personalName sequence="1">
+          <fullName>山田 太郎</fullName>
+          <familyName yomi="やまだ">山田</familyName>
+          <givenName yomi="たろう">太郎</givenName>
+        </personalName>
+        <affiliation sequence="1">
+          <institution institutionType="academic" niiCode="32616">東京大学</institution>
+          <department niiCode="001">工学部</department>
+          <jobTitle niiCode="002">教授</jobTitle>
+        </affiliation>
+      </member>
+      <projectStatus fiscalYear="2023" statusCode="granted" date="2023-03-31">
+        <note>some note</note>
+      </projectStatus>
+      <keywordList>
+        <keyword sequence="1">機械学習</keyword>
+        <keyword sequence="2">深層学習</keyword>
+      </keywordList>
+      <periodOfAward searchStartFiscalYear="2021" searchEndFiscalYear="2023">
+        <startDate>2021-04-01</startDate>
+        <endDate>2024-03-31</endDate>
+        <startFiscalYear>2021</startFiscalYear>
+        <endFiscalYear>2023</endFiscalYear>
+      </periodOfAward>
+      <overallAwardAmount planned="false" sequence="1" userDefiendId="id-001" caption="総額">
+        <directCost>3000000</directCost>
+        <indirectCost>900000</indirectCost>
+        <totalCost>3900000</totalCost>
+        <convertedJpyTotalCost>3900000</convertedJpyTotalCost>
+        <unit>
+          <originalValue>千円</originalValue>
+          <normalizedValue>JPY</normalizedValue>
+        </unit>
+      </overallAwardAmount>
+    </summary>
+    <summary xml:lang="en">
+      <title>Development of New Research Methods Using Machine Learning</title>
     </summary>
   </grantAward>
   <grantAward id="KAKENHI-PROJECT-22L20000" awardNumber="22L20000" projectType="area">
